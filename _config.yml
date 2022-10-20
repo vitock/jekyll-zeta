@@ -1,0 +1,66 @@
+title: jekyll-zeta! # name of the site
+author: vitock # name of site's author
+email: "" # email of site's author
+url: "" # root address of the site
+baseurl: "/jekyll-zeta" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
+description: > # description of the site (multiple lines allowed)
+  A (nearly) no-CSS, fast, minimalist Jekyll theme.
+
+
+
+
+favicon: "logo.png" # name+extension of favicon (which must be put on the root folder)
+# goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
+
+# theme: no-style-please2 # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
+
+theme_config:
+  appearance: "auto" # can be "light", "dark" or "auto"
+  date_format: "%Y-%m-%d" # customize how date is formatted
+  post_date_format: "%Y/%m/%d"
+  encrypt_title: "Content is Encryped :)"
+  # encrypt_clear_btn: "清空缓存密码"
+  # decrypt_btn: 解密
+  # encrypt_btn: 重新加密
+  tag_showall: true
+  all_tags_path: tags
+  all_tags_title: All Tags
+  archive_date_format: "%Y"
+  archive_title_date_format: "%m-%d"
+  tags_layout_style: 'auto'  # flat auto list
+  combine_css_html: false
+  menu:
+    - title: 主页
+      url: /
+    - title: 归档
+      url: /archive.html
+    - title: 标签
+      url: /tags.html
+    - title: 关于
+      url: /about.html
+
+  # 
+  # forbid_cache_password:  true
+
+
+
+ 
+
+plugins:
+   - no-style-please2-plugins 
+  # - jekyll-seo-tag
+
+
+enc_tags:
+    - tag: ZZ
+      password: '1'
+    - tag: encrypt1
+      password: "12345"  # plain text ,not recommed
+
+      # do Not write you public or privatekey in your repo,
+      # use ltectool g to generate a new one for your own blog
+      # publickey: Aos74Reqw/veNVVdCJJ8v8uTUx178mJIw1kjHjDtZ561
+      # privatekey: L28e3HZofHGGIr3ZZTIPhtfBfTbvxedNYF1xpJdx5PA=
+    - tag: encrypt2
+      # 123
+      password: AQAQACAAIQCvWkhJdhn0b21Pz381AdTeMLb5bRO4d2F3usQtpIL0fDD0G8cg4klENXxJNX+rAHwD8VW2iJo4hZKDQrjdOjbJFugo60XnMmbdLEfzXpkqGpjjbe875/owWyNnGGPk3Vf4

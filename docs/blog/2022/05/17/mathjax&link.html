@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+   
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+  <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+  <title>公式 MathJax link</title>
+
+  
+    
+ 
+     
+     
+     
+  
+
+  <link rel="shortcut icon" type="image/x-icon" href="/no-style-please/logo.png" />
+  
+  <link rel="stylesheet" href="/no-style-please/assets/css/main.css" />
+  
+  
+
+</head><body a="auto">
+    <main class="page-content" aria-label="Content">
+      
+      <div class="w"><h1> <a href="/no-style-please/"> no style, please! </a></h1><nav>
+    <ul class="navul"><li class="navli"><a href="/no-style-please/">主页</a></li><li class="navli"><a href="/no-style-please/archive.html">归档</a></li><li class="navli"><a href="/no-style-please/tags.html">标签</a></li><li class="navli"><a href="/no-style-please/about.html">关于</a></li></ul>
+</nav>
+<article>
+ 
+  
+  <h1>公式 MathJax link</h1>
+  <time datetime="2022-05-17 08:54:22 +0800">2022/05/17</time> &nbsp; &nbsp; 
+  
+  
+      <a href="/no-style-please/tags/blog.html"><text><nobr>#blog</nobr></text>&nbsp;</a>
+        
+  
+      <a href="/no-style-please/tags/math.html"><text><nobr>#math</nobr></text>&nbsp;</a>
+        
+  
+      <a href="/no-style-please/tags/no-style-please2.html"><text><nobr>#no-style-please2</nobr></text>&nbsp;</a>
+        </span><h1 id="mathjax-emc2">mathjax $E=MC^2$</h1>
+
+\[\begin{bmatrix}
+  F_n \\ 
+  F_{n-1}
+\end{bmatrix}
+= A \begin{bmatrix}
+  F_{n-1} \\ 
+  F_{n-2}
+\end{bmatrix}\]
+
+<h1 id="link-to-other-blog"><code class="highlighter-rouge">link</code> to other <code class="highlighter-rouge">blog</code></h1>
+<p><code class="highlighter-rouge">encrypt blog 2:123 Not Found</code></p>
+
+<p><code class="highlighter-rouge">BlogNotExist Not Found</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+{%post_link encrypt blog 2:123   %}
+
+</code></pre></div></div>
+<h1 id="image">image</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+{% asset_img nahan.png %}
+
+</code></pre></div></div>
+<p><img src="/no-style-please/pics/2022-05-17-mathjax&amp;link/nahan.png" alt="" /></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">例子</span><span class="err">，</span><span class="nx">取两个素数</span><span class="err">，</span> <span class="mi">5</span> <span class="nx">和</span> <span class="mi">11</span> <span class="err">，</span><span class="nx">计算</span>  
+<span class="nx">n</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">11</span> <span class="o">=</span> <span class="mi">55</span><span class="nx">$</span>
+<span class="nx">y</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="o">-</span><span class="mi">1</span><span class="p">)(</span><span class="mi">11</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span>  <span class="mi">40</span>
+
+<span class="nx">随机取一数</span><span class="p">,</span><span class="nx">私钥</span> <span class="nx">e</span> <span class="o">=</span> <span class="mi">3</span> 
+<span class="nx">根据</span> <span class="nx">ed</span>   <span class="o">=</span> <span class="mi">1</span> <span class="nx">mod</span> <span class="nx">n</span>  <span class="nx">得到</span>
+<span class="nx">d</span> <span class="o">=</span> <span class="mi">27</span>
+
+<span class="nx">已知消息为</span> <span class="mi">7</span> <span class="p">,</span> 
+
+<span class="nx">加密</span><span class="p">:</span> <span class="mi">7</span> <span class="o">^</span> <span class="mi">3</span> <span class="nx">mod</span>  <span class="mi">55</span> <span class="o">=</span> <span class="mi">13</span>
+
+<span class="mi">13</span> <span class="o">^</span> <span class="mi">27</span> <span class="o">=</span> <span class="p">((</span><span class="mi">13</span> <span class="p">)</span><span class="o">^</span> <span class="mi">3</span> <span class="p">)</span> <span class="o">^</span> <span class="mi">9</span> <span class="o">=</span> <span class="p">(</span><span class="mi">52</span> <span class="o">^</span> <span class="mi">3</span><span class="p">)</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">28</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">7</span> <span class="nx">mod</span> <span class="mi">55</span>
+
+<span class="nx">消息为</span> <span class="mi">22</span>
+<span class="nx">加密</span><span class="p">:</span><span class="mi">22</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">33</span> <span class="nx">mod</span> <span class="mi">55</span>
+
+<span class="nx">解密</span><span class="p">:</span><span class="mi">33</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">22</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">33</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">22</span>
+</code></pre></div></div>
+
+  
+  
+  
+</article>
+
+      </div>
+    </main>
+  </body>
+</html>
