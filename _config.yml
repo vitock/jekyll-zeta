@@ -29,6 +29,7 @@ theme_config:
   archive_title_date_format: "%m-%d"
   tags_layout_style: 'auto'  # flat auto list
   combine_css_html: false
+  show_more_text: 'Show more...'
   menu:
     - title: 主页
       url: /
