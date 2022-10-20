@@ -1,5 +1,0 @@
-#! /usr/bin/env bash
-
- export set JEKYLL_EC_PRIVATEKEY=L28e3HZofHGGIr3ZZTIPhtfBfTbvxedNYF1xpJdx5PA=
-
-bundle exec jekyll serve --trace
