@@ -1,19 +1,19 @@
 ---
 layout: default
 ---
-{%-include back_link.html -%}
 <ariticle>
 <h1>Tag: {{ page.tag }}</h1>
 
-<ul>
+<ul class="postlistul">
   {% for post in site.tags[page.tag] %}
-  <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> ({{ post.date | date_to_string }})<br>
-      {{ post.description }}
+  <li class="postlistli">
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        <date>{{- post.date | date: site.theme_config.date_format -}}</date>
         </li>
         {% endfor %}
 
 {% if site.theme_config.tag_showall %}
-        <li><a href="{{ site.baseurl }}/{{site.theme_config.all_tags_path | default:'tags' }}"> {{site.theme_config.all_tags_title | default:'All Tags' }}</a>
+        <li class="postlistli"><a href="{{ site.baseurl }}/{{site.theme_config.all_tags_path | default:'tags' }}"> {{site.theme_config.all_tags_title | default:'All Tags' }}</a>
         </li>
 {% endif %}
 </ul>

@@ -28,7 +28,7 @@ layout: default
     
     <li class="postlistli">
           <a href="{{ post.url | relative_url }}">{{ post.title | downcase }}</a>
-          <small><date datetime="{{post.date}}">{{- post.date | date: archive_date_titleformat }}</date></small>
+          <date datetime="{{post.date}}">{{- post.date | date: archive_date_titleformat }}</date>
     </li>
 
 {%- endfor -%}

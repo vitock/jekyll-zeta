@@ -83,13 +83,15 @@ li{
     margin-right: 1rem;
 }
 .postlistul{
-    padding: 0;
-    
+    padding: 0
+  
 }
 .postlistli{
     list-style-type:none;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
+    align-items: center;
+
 }
 
 .curNav{
@@ -97,5 +99,6 @@ li{
   font-weight: 700;
 }
 
- 
- 
+date {
+  color: #333;
+}
