@@ -5,6 +5,18 @@ layout: default
 <div class="post">
 <h1>{{page.title}}</h1>
 <article>
+    {% comment %}
+        sort tags by count
+    {% endcomment %}
+
+    {% capture tagsStr %}
+        {% for tag in site.tags %}
+            {{ tag[1].size | plus: 10000 }}#{{ tag[0] }}#{{ tag[1].size }}@@
+        {% endfor %}
+    {% endcapture %}
+
+    {% assign sortedtags = tagsStr | split:'@@' | sort %}
+
   
     {% assign  layouttype = site.theme_config.tags_layout_style | default: "auto" %}
 
@@ -17,8 +29,10 @@ layout: default
     {% endif %} 
     {% if layouttype == 'flat' %}
         {% assign counter = 0 %}
-        {% for item in  site.tags %}
-            {% assign  tagname = item[0] %}
+        {% for tag in sortedtags reversed %}
+            {% assign tagitems = tag | split: '#' %}
+            {% assign  tagname = tagitems[1] %}
+            {% assign  tagnameCount = tagitems[2] %}
             {% assign counter2 = counter | modulo: 4 %}
             {% if counter2  == 3 %}
             <p>
@@ -26,17 +40,22 @@ layout: default
             {% capture counter %}{% increment counter %} {% endcapture %}
 
 
-    <text><a href ="{{'/tags'|relative_url}}/{{ tagname}}.html" >{{ tagname}}</a> <sup>{{ site.tags[tagname].size }}</sup></text> &nbsp; &nbsp;
+    <text><a href ="{{'/tags'|relative_url}}/{{ tagname}}.html" >{{ tagname}}</a> <sup>{{ tagnameCount }}</sup></text> &nbsp; &nbsp;
         
         {% endfor %}
     {% else %}
     <ul class="postlistul" >
-        {% for item in  site.tags %}
-        {% assign  tagname = item[0] %}
+       
+
+        {% for tag in sortedtags reversed %}
+          
+            {% assign tagitems = tag | split: '#' %}
+            {% assign  tagname = tagitems[1] %}
+            {% assign  tagnameCount = tagitems[2] %}
         <li class="postlistli">
             <text>
                 <a href ="{{ site['baseurl']}}/tags/{{ item[0]}}.html" >{{ tagname}}</a>
-                <sup> {{ site.tags[tagname].size }} </sup>
+                <sup> {{ tagnameCount }} </sup>
             </text> &nbsp; 
         </li>
         {% endfor %}
