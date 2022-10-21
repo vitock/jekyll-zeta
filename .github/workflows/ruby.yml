@@ -42,9 +42,9 @@ jobs:
       name: build
       run: chmod +x ./runThisToServe && ./runThisToServe
     - name: Upload artifact
-          uses: actions/upload-pages-artifact@v1
-          with:
-            path: ./_site
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./_site
             
   deploy:
     environment:
