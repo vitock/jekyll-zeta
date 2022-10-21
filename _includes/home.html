@@ -1,0 +1,13 @@
+<h2>{{ page.title }}</h2>
+
+{%-assign nextPage = site.paginate_path | replace: ':num', '2' -%}
+
+{%
+  include post_list.html
+    limit=site.paginate
+    show_more=true
+    show_more_text=site.theme_config.show_more_text
+    show_more_url= nextPage 
+-%}
+
+{{ content }}
