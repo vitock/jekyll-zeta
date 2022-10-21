@@ -107,6 +107,7 @@ date {
   margin-top: 2rem;
   display: flex;
   float:right;
+  align-items:baseline; 
 }
 
 .page_number{

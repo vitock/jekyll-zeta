@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-# source "https://rubygems.org"
-source "https://gems.ruby-china.com"
+source "https://rubygems.org"
+# source "https://gems.ruby-china.com"
 
 gem "jekyll" ,"~>4.0.0"
 gem "kramdown-parser-gfm"
-gem "no-style-please2-plugins" ,"~>0.5.0"
+gem "no-style-please2-plugins" ,"~>0.6.0"
 gem "webrick"
 gem "jekyll-paginate" ,"~>1.0.0"
 

@@ -7,3 +7,4 @@ vendor
 Gemfile.lock
 tags
 pkg
+pkg/*

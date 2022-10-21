@@ -29,17 +29,17 @@ theme_config:
   archive_title_date_format: "%m-%d"
   tags_layout_style: 'auto'  # flat auto list
   combine_css_html: false
-  show_more_text: 'show more'
-  next_page_title: "Next"
-  previous_page_title: "Previous"
+  show_more_text: 'show more ...'
+  next_page_title: "next"
+  previous_page_title: "previous"
   menu:
-    - title: 主页
+    - title: Home
       url: /
-    - title: 归档
+    - title: Achive
       url: /archive.html
-    - title: 标签
+    - title: Tags
       url: /tags.html
-    - title: 关于
+    - title: About
       url: /about.html
 
   # 
@@ -47,8 +47,8 @@ theme_config:
 
 
 
-paginate: 12
-paginate_path: "/pages/page:num/"
+paginate: 7
+paginate_path: "/pages/p:num/"
 
 plugins:
    - no-style-please2-plugins 
