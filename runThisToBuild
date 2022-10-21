@@ -2,4 +2,6 @@
 
  export set JEKYLL_EC_PRIVATEKEY=L28e3HZofHGGIr3ZZTIPhtfBfTbvxedNYF1xpJdx5PA=
 
+rm -rf tags
+bundle exec jekyll clean
 bundle exec jekyll build

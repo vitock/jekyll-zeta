@@ -46,6 +46,7 @@ theme_config:
   # forbid_cache_password:  true
 
 
+permalink: "/post/:year/:month/:day/:title:output_ext"
 
 paginate: 7
 paginate_path: "/pages/p:num/"
