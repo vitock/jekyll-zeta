@@ -40,7 +40,7 @@ jobs:
       # run: bundle install
     - shell: bash
       name: build
-      run: chmod +x ./runThisToServe && ./runThisToServe
+      run: chmod +x ./runThisToBuild && ./runThisToBuild
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
