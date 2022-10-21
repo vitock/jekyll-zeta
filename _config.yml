@@ -29,7 +29,9 @@ theme_config:
   archive_title_date_format: "%m-%d"
   tags_layout_style: 'auto'  # flat auto list
   combine_css_html: false
-  show_more_text: 'Show more...'
+  show_more_text: 'show more'
+  next_page_title: "Next"
+  previous_page_title: "Previous"
   menu:
     - title: 主页
       url: /
@@ -45,10 +47,12 @@ theme_config:
 
 
 
- 
+paginate: 12
+paginate_path: "/pages/page:num/"
 
 plugins:
    - no-style-please2-plugins 
+   - jekyll-paginate
   # - jekyll-seo-tag
 
 

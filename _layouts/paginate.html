@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+
+<h1>{{ page.title }}</h1>
+
+{%-assign nextPage = site.paginate_path | replace: ':num', '2' -%}
+
+{%
+  include archive_list.html
+  collection=paginator.posts
+  limit=site.paginate
+-%}
+
+ 
+
+{{ content }}
+ 
+ 
+<div class="pagebar">
+
+  {% if paginator.previous_page %}
+  <a href="{{ paginator.previous_page_path  | relative_url}}" class="previous">
+    {{ site.theme_config.previous_page_title | default: "Previous" }} 
+  </a>
+  {% else %}
+  <span class="previous">
+    {{ site.theme_config.previous_page_title | default: "Previous" }} 
+  </span>
+  {% endif %}
+  <span class="page_number "> 
+    {{ paginator.page }}/{{ paginator.total_pages }}
+  </span>
+  {% if paginator.next_page %}
+  <a href="{{ paginator.next_page_path | relative_url }}" class="next">
+    {{ site.theme_config.next_page_title | default: "Next" }} 
+  </a>
+  {% else %}
+  <span class="next ">
+    {{ site.theme_config.next_page_title | default: "Next" }} 
+  </span>
+  {% endif %}
+</div>
+

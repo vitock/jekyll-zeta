@@ -1,0 +1,31 @@
+
+{%-assign posts = include.collection -%}
+{%- if posts.size > 0 -%}
+
+{% assign ymPre = "" %}
+{% assign archive_date_format =  site.theme_config.archive_date_format | default: "%Y" %}
+
+{% assign archive_date_titleformat = site.theme_config.archive_title_date_format | default: "%m-%d" %} 
+
+<ul class="postlistul">
+{%- for post in posts limit: include.limit -%}
+    {% assign  ymCur = post.date | date: archive_date_format %}  
+    {% if ymCur != ymPre %}
+        {% if ymPre != "" %}
+             </ul>
+        {% endif %}
+      <li class="postlistli"><h2>{{ymCur}}</h2></li> 
+      <ul class="postlistul">
+    {% endif %}
+    {% assign ymPre = ymCur %}
+    
+    <li class="postlistli">
+          <a href="{{ post.url | relative_url }}">{{ post.title | downcase }}</a>
+          <date datetime="{{post.date}}">{{- post.date | date: archive_date_titleformat }}</date>
+    </li>
+
+{%- endfor -%}
+</ul>
+{%- endif -%}
+
+ 

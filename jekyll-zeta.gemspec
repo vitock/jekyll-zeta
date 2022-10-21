@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-zeta"
-  spec.version       = "0.2.3"
+  spec.version       = "0.2.4"
   spec.authors       = ["vitock"]
   spec.email         = ["r"]
 
@@ -10,9 +10,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/vitock/jekyll-zeta"
   spec.license       = "GPL"
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README|_config\.yml)!i) }
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README|_config\.yml|index\.html)!i) }
 
   spec.add_runtime_dependency "jekyll", ">= 4.0.0"
+  spec.add_runtime_dependency "jekyll-paginate", "~> 1.0.0"
+  
   spec.add_runtime_dependency "no-style-please2-plugins", "~>0.5.0"
 
 end

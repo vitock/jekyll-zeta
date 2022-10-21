@@ -102,3 +102,16 @@ li{
 date {
   color: #333;
 }
+
+.pagebar{
+  margin-top: 2rem;
+  display: flex;
+  float:right;
+}
+
+.page_number{
+  color: #333;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}

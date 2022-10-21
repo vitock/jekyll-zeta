@@ -3,7 +3,7 @@ layout: default
 ---
 {%-include back_link.html -%}
 <div class="post">
-<h1>{{page.title}}</h1>
+<h2>{{page.title}}</h2>
 <article>
     {% comment %}
         sort tags by count
@@ -54,7 +54,7 @@ layout: default
             {% assign  tagnameCount = tagitems[2] %}
         <li class="postlistli">
             <text>
-                <a href ="{{ site['baseurl']}}/tags/{{ item[0]}}.html" >{{ tagname}}</a>
+                <a href ="{{'/tags'|relative_url}}/{{ tagname}}.html" >{{ tagname}}</a>
                 <sup> {{ tagnameCount }} </sup>
             </text> &nbsp; 
         </li>
