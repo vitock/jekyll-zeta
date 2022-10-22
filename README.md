@@ -1,5 +1,6 @@
 # jekyll-zeta
 
+[demo page](https://vitock.github.io/jekyll-zeta/)
 ![](preview.png)
  
 ## Features
