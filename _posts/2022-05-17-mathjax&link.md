@@ -29,14 +29,14 @@ $$
 
 
 # `link` to other `blog`
-{%post_link encrypt blog 2:123 %}
+{%post_link encrypt blog 2:12345 %}
 
 {%post_link BlogNotExist %}
 
 
 ```
 {% raw %}
-{%post_link encrypt blog 2:123   %}
+{%post_link encrypt blog 2:12345   %}
 {% endraw %}
 ```
 # image
