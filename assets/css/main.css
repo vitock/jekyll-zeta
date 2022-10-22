@@ -5,7 +5,7 @@ li{
   .w {
     margin: auto;
     max-width: 640px;
-    padding: 4rem 2rem; 
+    padding:0 2rem; 
   }
   
   code.highlighter-rouge{
@@ -81,6 +81,7 @@ li{
 .navli{
     list-style-type:none;
     margin-right: 1rem;
+    font-size: 1.135rem;
 }
 .postlistul{
     padding: 0
