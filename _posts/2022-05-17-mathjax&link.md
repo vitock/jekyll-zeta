@@ -9,7 +9,7 @@ mathjax: true
 tags:
  - blog
  - math
- - no-style-please2
+ - jekyll-zeta
 ---
 
 # mathjax $E=MC^2$

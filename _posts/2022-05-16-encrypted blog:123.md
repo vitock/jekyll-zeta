@@ -8,7 +8,7 @@ mathjax: false
 key: abc
 tags:
  - blog
- - no-style-please2
+ - jekyll-zeta
 ---
 
 ```

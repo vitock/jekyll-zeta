@@ -7,6 +7,7 @@
 
 {% assign archive_date_titleformat = site.theme_config.archive_title_date_format | default: "%m-%d" %} 
 
+{% assign yCounter = 0 %}
 <ul class="postlistul">
 {%- for post in posts limit: include.limit -%}
     {% assign  ymCur = post.date | date: archive_date_format %}  
@@ -14,7 +15,13 @@
         {% if ymPre != "" %}
              </ul>
         {% endif %}
-      <li class="postlistli"><h2>{{ymCur}}</h2></li> 
+      {% if yCounter == 0 %}
+      <li class="postlistli largeli largeli0">{{ymCur}}</li> 
+      {% else %}
+        <li class="postlistli largeli">{{ymCur}}</li> 
+      {% endif %}
+      
+      {%- assign yCounter = yCounter | plus:1 -%}
       <ul class="postlistul">
     {% endif %}
     {% assign ymPre = ymCur %}
