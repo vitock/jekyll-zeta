@@ -1,15 +1,13 @@
-
+{% assign titlelen = page.title.size %}
+{% if titlelen > 0 %}
 <h2>{{ page.title }}</h2>
-
+{% endif %}
 {%-assign nextPage = site.paginate_path | replace: ':num', '2' -%}
-
 {%
   include archive_list.html
   collection=paginator.posts
   limit=site.paginate
 -%}
-
- 
 
 {{ content }}
  

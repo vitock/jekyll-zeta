@@ -2,18 +2,20 @@
 layout: default
 ---
 
+
  
 <article>
- 
-  
-  <h2>{{ page.title }}</h2>
-  <time datetime="{{ page.date }}">{{ page.date | date: site.theme_config.post_date_format }}</time> &nbsp; &nbsp; 
+{% assign titlelen = page.title.size %}
+{% if titlelen > 0 %}
+<h2>{{ page.title }}</h2>
+{% endif %}
+<time datetime="{{ page.date }}">{{ page.date | date: site.theme_config.post_date_format }}</time> &nbsp; &nbsp; 
   {% for tag in page.tags %}
   {% capture tag_name %}{{ tag }}{% endcapture %}
       <a href="{{ site.baseurl }}/tags/{{ tag_name }}.html"><text><nobr>#{{ tag_name }}</nobr></text>&nbsp;</a>
         {% endfor %}</span>
 
-  {%- capture encid %}{{ "" | get_encrypt_id:page}}{% endcapture -%}
+  {%- assign encid = "" | get_encrypt_id:page  -%}
   {%- if  encid == '' -%}
   {{ content }}
   {% else %}

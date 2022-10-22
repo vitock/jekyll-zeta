@@ -3,7 +3,10 @@ layout: default
 ---
 {%-include back_link.html -%}
 <div class="post">
-<h2>{{page.title}}</h2>
+{% assign titlelen = page.title.size %}
+{% if titlelen > 0 %}
+<h2>{{ page.title }}</h2>
+{% endif %}
 <article>
     {% comment %}
         sort tags by count
