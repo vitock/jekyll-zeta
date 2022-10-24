@@ -6,7 +6,8 @@ baseurl: "/jekyll-zeta" # subpath of the site, e.g. "/blog" (leave it blank "" i
 description: > # description of the site (multiple lines allowed)
   A (nearly) no-CSS, fast, minimalist Jekyll theme.
 
-
+sass:
+  style: compressed
 
 
 favicon: "logo.png" # name+extension of favicon (which must be put on the root folder)
