@@ -27,7 +27,7 @@
     {% assign ymPre = ymCur %}
     
     <li class="postlistli">
-          <a href="{{ post.url | relative_url }}">{{ post.title | downcase }}</a>
+          <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
           <date datetime="{{post.date}}">{{- post.date | date: archive_date_titleformat }}</date>
     </li>
 
