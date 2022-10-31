@@ -5,7 +5,7 @@ li {
 .w {
   margin: auto;
   max-width: 640px;
-  padding: 0.5rem;
+  padding: .5rem .5rem 5rem .5rem;
   word-wrap: break-word;
 }
 
@@ -56,7 +56,7 @@ table {
 table,
 th,
 td {
-  border: thin solid black;
+  border: thin solid #e0e0e0;
   border-collapse: collapse;
   padding: 0.4rem;
 }
@@ -64,7 +64,7 @@ td {
 hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  border-color: lightgray
+  border-color: #e0e0e0
 }
 
 
