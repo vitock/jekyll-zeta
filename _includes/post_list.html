@@ -11,7 +11,7 @@
 {%-endif-%}
 
 {%- if posts.size > 0 -%}
-   {% assign lock_path = site.theme_config.lock_path | default: "assets/image/lock.png" %}
+   {% assign lock_path = site.theme_config.lock_path  %}
   <ul class="postlistul">
     {%- for post in posts limit: include.limit -%}
         <li class="postlistli">
