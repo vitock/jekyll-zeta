@@ -1,8 +1,6 @@
 ---
 layout: default
 ---
-
-<article>
 {% assign titlelen = page.title.size %}
 {% if titlelen > 0 %}
 <h2>{{ page.title }}</h2>
@@ -11,8 +9,9 @@ layout: default
   {% for tag in page.tags %}
   {% capture tag_name %}{{ tag }}{% endcapture %}
       <a href="{{ site.baseurl }}/tags/{{ tag_name }}.html"><text><nobr>#{{ tag_name }}</nobr></text>&nbsp;</a>
-        {% endfor %}</span>
-
+  {% endfor %}
+  
+<article>
   {%- assign encid = "" | get_encrypt_id:page  -%}
   {%- if  encid == '' -%}
   {{ content }}
