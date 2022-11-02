@@ -5,10 +5,9 @@ li {
 article{
   line-height: 1.4;
 }
-
 .w {
   margin: auto;
-  max-width: 640px;
+  max-width: 740px;
   padding: .5rem .5rem 5rem .5rem;
   word-wrap: break-word;
 }
@@ -147,4 +146,15 @@ date {
 .largeli0 {
   padding: 0 0 0.5rem 0;
 }
- 
+
+.footer{
+  margin-top: 4rem;
+  color: #aaa;
+  width: 100%;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.footer a {
+  color: #808080;
+}

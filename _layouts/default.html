@@ -7,6 +7,15 @@
       <div class="w">
         {%- include navbar.html -%}
         {{ content }}
+
+        {% assign footnote = site.theme_config.show_footnote | default:true %}
+        {% if footnote  %}
+         <footer class="footer">
+          <p> © {{page.date | date: "%Y" | default: "2022" }} {{site.author}} 
+          Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vitock/jekyll-zeta">Jekyll-zeta</a>
+         </p>
+        </footer>
+        {%endif%}
       </div>
     </main>
 
@@ -18,6 +27,6 @@
       {% for js_file in page.custom_js %}
         <script type="text/javascript" src="{{ site.baseurl }}/assets/js/{{ js_file }}.js"></script>
       {% endfor %}
-    {% endif %}
+    {% endif %}  
   </body>
 </html>
