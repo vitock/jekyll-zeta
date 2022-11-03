@@ -1,41 +1,39 @@
-{%-if include.collection-%}
-  {%-assign posts = include.collection-%}  
-{%-else-%}
-  {%-assign posts = site.posts-%}
-{%-endif-%}
+{%- if include.collection -%}
+  {%- assign posts = include.collection -%}  
+{%- else -%}
+  {%- assign posts = site.posts -%}
+{%- endif -%}
 
-{%-if include.limit and posts.size > include.limit-%}
-  {%-assign limit_exceeded = true-%}
-{%-else-%}
-  {%-assign limit_exceeded = false-%}
-{%-endif-%}
-
+{%- if include.limit and posts.size > include.limit -%}
+  {%- assign limit_exceeded = true -%}
+{%- else -%}
+  {%- assign limit_exceeded = false -%}
+{%- endif -%}
 {%- if posts.size > 0 -%}
-   {% assign lock_path = site.theme_config.lock_path  %}
+   {%- assign lock_path = site.theme_config.lock_path  -%}
   <ul class="postlistul">
     {%- for post in posts limit: include.limit -%}
         <li class="postlistli">
-          {% if lock_path.size > 0 %}
+          {%- if lock_path.size > 0 -%}
               {%- assign encid = "" | get_encrypt_id:post | default: "" -%}
-              {% if encid.size > 1  %}
+              {%- if encid.size > 1  -%}
               <div >
                 <a href="{{ post.url | relative_url }} ">{{ post.title  }}</a>  
                 <img  style="width:12px;height:12px;display: inline;margin-left: 5px;" src="{{ lock_path | relative_url}}">
               </div>
-              {% else %}
+              {%- else -%}
                 <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
-              {% endif %}
-
-          {%else%}
+              {%- endif -%}
+          {%- else -%}
             <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
-          {% endif %}
-         
-
+          {%- endif -%}
           <date>{{- post.date | date: site.theme_config.date_format -}}</date>
-        </li>
+        </li> 
     {%- endfor -%}
     {%- if include.show_more and limit_exceeded -%}
-      <li class="postlistli"><a href="{{ include.show_more_url | relative_url }}">{{ include.show_more_text | default: "Show more..." }}</a></li>
+      <li class="postlistli">
+        <a href="{{ include.show_more_url | relative_url }}">{{ include.show_more_text | default: "Show more..." }}</a>
+      </li>
     {%- endif -%}
   </ul>
 {%- endif -%}

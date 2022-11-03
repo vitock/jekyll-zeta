@@ -2,49 +2,47 @@
 {%-assign posts = include.collection -%}
 {%- if posts.size > 0 -%}
 
-{% assign ymPre = "" %}
-{% assign archive_date_format =  site.theme_config.archive_date_format | default: "%Y" %}
+{%- assign ymPre = "" -%}
+{%- assign archive_date_format =  site.theme_config.archive_date_format | default: "%Y" -%}
 
-{% assign archive_date_titleformat = site.theme_config.archive_title_date_format | default: "%m-%d" %} 
+{%- assign archive_date_titleformat = site.theme_config.archive_title_date_format | default: "%m-%d" -%} 
 
-{% assign yCounter = 0 %}
-{% assign lock_path = site.theme_config.lock_path  %}
+{%- assign yCounter = 0 -%}
+{%- assign lock_path = site.theme_config.lock_path  -%}
 <ul class="postlistul">
 {%- for post in posts limit: include.limit -%}
-    {% assign  ymCur = post.date | date: archive_date_format %}  
-    {% if ymCur != ymPre %}
-        {% if ymPre != "" %}
+    {%- assign  ymCur = post.date | date: archive_date_format -%}  
+    {%- if ymCur != ymPre -%}
+        {%- if ymPre != "" -%}
              </ul>
-        {% endif %}
-      {% if yCounter == 0 %}
+        {%- endif -%}
+      {%- if yCounter == 0 -%}
       <li class="postlistli largeli largeli0">{{ymCur}}</li> 
-      {% else %}
+      {%- else -%}
         <li class="postlistli largeli">{{ymCur}}</li> 
-      {% endif %}
+      {%- endif -%}
       
       {%- assign yCounter = yCounter | plus:1 -%}
       <ul class="postlistul">
-    {% endif %}
-    {% assign ymPre = ymCur %}
+    {%- endif -%}
+    {%- assign ymPre = ymCur -%}
     
     <li class="postlistli">
-      {% if lock_path.size > 0  %}
+      {%- if lock_path.size > 0  -%}
         {%- assign encid = "" | get_encrypt_id:post | default: "" -%}
-        {% if encid.size > 1  %}
+        {%- if encid.size > 1  -%}
         <div >
           <a href="{{ post.url | relative_url }} ">{{ post.title  }}</a>  
           <img  style="width:12px;height:12px;display: inline;margin-left: 5px;" src="{{ lock_path | relative_url}}">
         </div>
-        {% else %}
+        {%- else -%}
           <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
-        {% endif %}
-      {% else %}
+        {%- endif -%}
+      {%- else -%}
         <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
-      {%endif%}
+      {%- endif -%}
       <date datetime="{{post.date}}">{{- post.date | date: archive_date_titleformat }}</date>
-        
     </li>
-
 {%- endfor -%}
 </ul>
 {%- endif -%}

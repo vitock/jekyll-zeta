@@ -3,68 +3,65 @@ layout: default
 ---
 {%-include back_link.html -%}
 <div class="post">
-{% assign titlelen = page.title.size %}
-{% if titlelen > 0 %}
+{%- assign titlelen = page.title.size -%}
+{%- if titlelen > 0 -%}
 <h2>{{ page.title }}</h2>
-{% endif %}
+{%- endif -%}
 <article>
-    {% comment %}
+    {%- comment -%}
         sort tags by count
-    {% endcomment %}
+    {%- endcomment -%}
 
-    {% capture tagsStr %}
-        {% for tag in site.tags %}
+    {%- capture tagsStr -%}
+        {%- for tag in site.tags -%}
             {{ tag[1].size | plus: 10000 }}#{{ tag[0] }}#{{ tag[1].size }}@@
-        {% endfor %}
-    {% endcapture %}
+        {%- endfor -%}
+    {%- endcapture -%}
 
-    {% assign sortedtags = tagsStr | split:'@@' | sort %}
+    {%- assign sortedtags = tagsStr | split:'@@' | sort -%}
 
   
-    {% assign  layouttype = site.theme_config.tags_layout_style | default: "auto" %}
+    {%- assign  layouttype = site.theme_config.tags_layout_style | default: "auto" -%}
 
-    {% if layouttype == 'auto' %}
-        {% if site.tags.size > 20 %}
-            {% assign  layouttype = 'flat' %}
-        {% else %}
-            {% assign  layouttype = 'list' %}
-        {% endif %}
-    {% endif %} 
-    {% if layouttype == 'flat' %}
-        {% assign counter = 0 %}
-        {% for tag in sortedtags reversed %}
-            {% assign tagitems = tag | split: '#' %}
-            {% assign  tagname = tagitems[1] %}
-            {% assign  tagnameCount = tagitems[2] %}
-            {% assign counter2 = counter | modulo: 4 %}
-            {% if counter2  == 3 %}
+    {%- if layouttype == 'auto' -%}
+        {%- if site.tags.size > 20 -%}
+            {%- assign  layouttype = 'flat' -%}
+        {%- else -%}
+            {%- assign  layouttype = 'list' -%}
+        {%- endif -%}
+    {%- endif -%} 
+    {%- if layouttype == 'flat' -%}
+        {%- assign counter = 0 -%}
+        {%- for tag in sortedtags reversed -%}
+            {%- assign tagitems = tag | split: '#' -%}
+            {%- assign  tagname = tagitems[1] -%}
+            {%- assign  tagnameCount = tagitems[2] -%}
+            {%- assign counter2 = counter | modulo: 4 -%}
+            {%- if counter2  == 3 -%}
             <p>
-            {% endif %}
-            {% capture counter %}{% increment counter %} {% endcapture %}
+            {%- endif -%}
+            {%- capture counter -%}{%- increment counter -%} {%- endcapture -%}
 
 
     <text><a href ="{{'/tags'|relative_url}}/{{ tagname}}.html" >{{ tagname}}</a> <sup>{{ tagnameCount }}</sup></text> &nbsp; &nbsp;
         
-        {% endfor %}
-    {% else %}
+        {%- endfor -%}
+    {%- else -%}
     <ul class="postlistul" >
-       
-
-        {% for tag in sortedtags reversed %}
-          
-            {% assign tagitems = tag | split: '#' %}
-            {% assign  tagname = tagitems[1] %}
-            {% assign  tagnameCount = tagitems[2] %}
+        {%- for tag in sortedtags reversed -%}
+            {%- assign tagitems = tag | split: '#' -%}
+            {%- assign  tagname = tagitems[1] -%}
+            {%- assign  tagnameCount = tagitems[2] -%}
         <li class="postlistli">
             <text>
                 <a href ="{{'/tags'|relative_url}}/{{ tagname}}.html" >{{ tagname}}</a>
                 <sup> {{ tagnameCount }} </sup>
             </text> &nbsp; 
         </li>
-        {% endfor %}
+        {%- endfor -%}
     </ul>
 
-    {% endif %}
+    {%- endif -%}
     
 </article>
 </div>

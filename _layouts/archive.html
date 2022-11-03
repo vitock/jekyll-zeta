@@ -1,16 +1,16 @@
 ---
 layout: default
 ---
-{% assign titlelen = page.title.size %}
-{% if titlelen > 0 %}
+{%- assign titlelen = page.title.size -%}
+{%- if titlelen > 0 -%}
 <h2>{{ page.title }}</h2>
-{% endif %}
+{%- endif -%}
 
 {%-assign posts = site.posts-%}
 {%- if posts.size > 0 -%}
-  {% include archive_list.html
+  {%- include archive_list.html
     collection=posts
-  %}
+  -%}
 {%- endif -%}
 
  

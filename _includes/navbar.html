@@ -1,5 +1,5 @@
 <h1> <a href="{{ '/' | relative_url }}"> {{ site.title }} </a></h1>
-{%- capture currentUrl %}{{ page.url | relative_url}}{% endcapture -%}
+{%- capture currentUrl -%}{{ page.url | relative_url}}{%- endcapture -%}
 <nav>
     <ul class="navul">
       
@@ -9,14 +9,14 @@
 
       
         {%- if item.url -%}
-          {%- capture itemurl %}{{ item.url | relative_url}}{% endcapture -%}
+          {%- capture itemurl -%}{{ item.url | relative_url}}{%- endcapture -%}
         
 
           {%- if currentUrl == itemurl -%}
               <text class="curNav">{{ item.title }}</text>
           {%- else -%}
               <a href="{{ itemurl }}">{{ item.title }}</a>
-          {%- endif - %}
+          {%- endif - -%}
           
         {%- else -%}
           {{ item.title }}

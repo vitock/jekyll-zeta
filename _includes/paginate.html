@@ -1,7 +1,7 @@
-{% assign titlelen = page.title.size %}
-{% if titlelen > 0 %}
+{%- assign titlelen = page.title.size -%}
+{%- if titlelen > 0 -%}
 <h2>{{ page.title }}</h2>
-{% endif %}
+{%- endif -%}
 {%-assign nextPage = site.paginate_path | replace: ':num', '2' -%}
 {%
   include archive_list.html
@@ -10,30 +10,28 @@
 -%}
 
 {{ content }}
- 
- 
-<div class="pagebar">
 
-  {% if paginator.previous_page %}
+<div class="pagebar">
+  {%- if paginator.previous_page -%}
   <a href="{{ paginator.previous_page_path  | relative_url}}" class="previous">
     {{ site.theme_config.previous_page_title | default: "Previous" }} 
   </a>
-  {% else %}
+  {%- else -%}
   <span class="previous">
     {{ site.theme_config.previous_page_title | default: "Previous" }} 
   </span>
-  {% endif %}
+  {%- endif -%}
   <span class="page_number "> 
     {{ paginator.page }}/{{ paginator.total_pages }}
   </span>
-  {% if paginator.next_page %}
+  {%- if paginator.next_page -%}  
   <a href="{{ paginator.next_page_path | relative_url }}" class="next">
     {{ site.theme_config.next_page_title | default: "Next" }} 
   </a>
-  {% else %}
+  {%- else -%}
   <span class="next ">
     {{ site.theme_config.next_page_title | default: "Next" }} 
   </span>
-  {% endif %}
+  {%- endif -%}
 </div>
 

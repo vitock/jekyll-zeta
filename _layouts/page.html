@@ -1,9 +1,9 @@
 ---
 layout: default
 ---
-{% assign titlelen = page.title.size %}
-{% if titlelen > 0 %}
+{%- assign titlelen = page.title.size -%}
+{%- if titlelen > 0 -%}
 <h2>{{ page.title }}</h2>
-{% endif %}
+{%- endif -%}
 
 {{ content }}

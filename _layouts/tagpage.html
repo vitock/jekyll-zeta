@@ -3,8 +3,8 @@ layout: default
 ---
 
 <h2>Tag: {{ page.tag }}</h2>
-{% assign posts = site.tags[page.tag]  %}
-  {% 
+{%- assign posts = site.tags[page.tag]  -%}
+  {%- 
   include post_list.html
   collection = posts
    -%}

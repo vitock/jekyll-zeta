@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-{% if paginator.page == 1 %}
-  {% include home.html %}
-{% else %} 
-  {% include paginate.html %}
-{% endif %}
+{%- if paginator.page == 1 -%}
+  {%- include home.html -%}
+{%- else -%} 
+  {%- include paginate.html -%}
+{%- endif -%}
