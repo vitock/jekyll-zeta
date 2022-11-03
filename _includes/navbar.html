@@ -1,16 +1,13 @@
+{%- if site.title.size > 0  %}
 <h1> <a href="{{ '/' | relative_url }}"> {{ site.title }} </a></h1>
-{%- capture currentUrl -%}{{ page.url | relative_url}}{%- endcapture -%}
+{%- endif -%}
+{%- capture currentUrl -%}{{ page.url | relative_url}}{%- endcapture %}
 <nav>
     <ul class="navul">
-      
-
-      {%-for item in site.theme_config.menu -%}
+      {%-for item in site.theme_config.menu %}
         <li class="navli">
-
-      
         {%- if item.url -%}
           {%- capture itemurl -%}{{ item.url | relative_url}}{%- endcapture -%}
-        
 
           {%- if currentUrl == itemurl -%}
               <text class="curNav">{{ item.title }}</text>
