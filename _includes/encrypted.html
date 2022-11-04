@@ -126,18 +126,14 @@
             localStorage.clear();
         }
 
-        
-
-        
-    
-        {%- if site.theme_config.forbid_cache_password -%}
+        {%- if site.theme_config.forbid_cache_password %}
         function readKey(){
         }
         function setKey(value){
         }
         function clearKey() {
         }
-        {%- else -%}
+        {%- else %}
             function readKey(){
                 var key = encid;
                 var v = localStorage.getItem(key)
@@ -162,10 +158,7 @@
                 decrypt(cachekey,true)
             }
 
-        {%- endif -%}
-        
-        
- 
+        {%- endif %}
     }()
     
     </script>
