@@ -27,7 +27,6 @@ $$
 
 
 
-
 # `link` to other `blog`
 {%post_link encrypt blog 2:12345 %}
 
@@ -39,6 +38,9 @@ $$
 {%post_link encrypt blog 2:12345   %}
 {% endraw %}
 ```
+
+---
+
 # image
 ```
 {% raw %}
