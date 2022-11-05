@@ -11,8 +11,7 @@
         {%- assign footnote = site.theme_config.show_footnote | default:true -%}
         {%- if footnote  -%}
          <footer class="footer">
-          <p> © {{page.date | date: "%Y" | default: "2022" }} {{site.author -}} 
-          Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vitock/jekyll-zeta">Jekyll-zeta</a>
+          <p> © {{page.date | date: "%Y" | default: "2022" }} {{site.author }}  Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vitock/jekyll-zeta">Jekyll-zeta</a>
          </p>
         </footer>
         {%- endif -%}
