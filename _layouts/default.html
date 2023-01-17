@@ -7,9 +7,9 @@
       <div class="w">
         {%- include navbar.html -%}
         {{ content }}
-        
-        {%- assign footnote = site.theme_config.show_footnote | default:true -%}
-        {%- if footnote  -%}
+        {%- assign footnote = site.theme_config.show_footnote  -%}
+        {%- if footnote == true   -%}
+       
          <footer class="footer">
           <p> Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vitock/jekyll-zeta">Jekyll-zeta</a>
          </p>

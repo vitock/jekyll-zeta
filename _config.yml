@@ -34,6 +34,7 @@ theme_config:
   next_page_title: "next"
   previous_page_title: "previous"
   lock_path: "assets/image/lock4.png"
+  show_footnote: true
   menu:
     - title: Home
       url: /
