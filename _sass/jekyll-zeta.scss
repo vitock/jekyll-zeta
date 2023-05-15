@@ -2,12 +2,17 @@ li {
   padding: 0.2rem;
 }
 
+body{
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
 article{
-  line-height: 1.4;
+  line-height: 1.6;
 }
 .w {
   margin: auto;
-  max-width: 740px;
+  max-width: 656px;
   padding: 0 .5rem 5rem .5rem;
   word-wrap: break-word;
 }
