@@ -79,8 +79,12 @@ tr:nth-child(even){
 hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  border-color: #808080;
-  border-style: dashed
+  
+
+  border: 0;
+  padding: 5px;
+
+  background: repeating-linear-gradient(45deg, #000 0px, #000 1px, transparent 1px, transparent 6px);
 }
 
 
