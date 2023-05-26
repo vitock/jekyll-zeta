@@ -23,9 +23,9 @@
         {%- endif %}
 
           {%- if iscurrent  == true -%}
-              <text class="curNav">{{ item.title }}</text>
+              <a href="{{ itemurl }}" class="curNav">{{ item.title }}</a>
           {%- else -%}
-              <a href="{{ itemurl }}">{{ item.title }}</a>
+              <a href="{{ itemurl }}" class="nav">{{ item.title }}</a>
           {%- endif - -%}
           
         {%- else -%}

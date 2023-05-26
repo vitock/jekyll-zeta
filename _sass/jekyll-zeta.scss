@@ -126,15 +126,7 @@ a {
   margin-right: 1rem;
   font-size: 1.125rem;
 }
-.navli a{
-  color: $color-black;
-}
-.curNav {
-  color: $color-blue;
-  font-size: 1.2em;
  
-}
-
 .postlistul {
   padding: 0
 }
@@ -148,7 +140,7 @@ a {
 
 }
 
-.postlistli  a,.pagebar a {
+.postlistli  a,.pagebar a ,.tags-tag{
   color: #000;
 }
 
@@ -217,4 +209,13 @@ time {
 a:hover {
   text-decoration: underline;
   color:$color-hove;
+}
+
+.curNav {
+  color: $color-blue;
+  font-size: 1.2em;
+}
+
+.nav{
+  color: $color-black;
 }

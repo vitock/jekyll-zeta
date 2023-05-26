@@ -28,7 +28,7 @@ theme_config:
   all_tags_title: All Tags
   archive_date_format: "%Y"
   archive_title_date_format: "%m/%d"
-  tags_layout_style: 'auto'  # flat auto list
+  tags_layout_style: 'flat'  # flat auto list
   combine_css_html: false
   show_more_text: 'show more ...'
   next_page_title: "next"

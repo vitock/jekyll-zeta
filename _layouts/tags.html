@@ -43,7 +43,7 @@ layout: default
             {%- capture counter -%}{%- increment counter -%} {%- endcapture -%}
 
 
-    <text><a href ="{{'/tags'|relative_url}}/{{ tagname}}.html" >{{ tagname}}</a> <sup>{{ tagnameCount }}</sup></text> &nbsp; &nbsp;
+    <text><a class="tags-tag" href ="{{'/tags'|relative_url}}/{{ tagname}}.html" >{{ tagname}}</a> <sup>{{ tagnameCount }}</sup></text> &nbsp; &nbsp;
         
         {%- endfor -%}
     {%- else -%}
