@@ -219,3 +219,23 @@ a:hover {
 .nav{
   color: $color-black;
 }
+
+input[type="button"]{
+  /* 设置按钮的背景色，字体样式等 */
+  background-color: #e0e0e0;
+  border: none;
+  color: $color-black;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8em;
+ 
+  cursor: pointer;
+  border-radius: 3px;
+  /* 鼠标悬停时改变按钮颜色 */
+}
+input[type="button"]:hover{
+  background-color: $color-black;
+  color: white;
+}
