@@ -1,3 +1,13 @@
+$color-red: #FF0000;
+$color-black: #333;
+$color-blue: #0064c1;
+$color-hove: #0064c1;
+$color-gray: #9ca3af;
+$color-lightGray: #9ca3af;
+
+
+
+
 li {
   padding: 0.2rem;
 }
@@ -18,7 +28,7 @@ article{
 }
 
 code.highlighter-rouge {
-  color: #333;
+  color: $color-black;
   background: #F0f2f4;
   border-radius: 3px;
   padding: 0 5px;
@@ -26,7 +36,7 @@ code.highlighter-rouge {
 }
 
 code {
-  color: #333;
+  color: $color-black;
   background: #F0f2f4;
   max-height: 35rem;
 }
@@ -82,40 +92,47 @@ hr {
   
 
   border: 0;
-  padding: 5px;
+  padding: 3px;
 
-  background: repeating-linear-gradient(45deg, #000 0px, #000 1px, transparent 1px, transparent 6px);
+  background: repeating-linear-gradient(135deg, #000 0px, #000 1px, transparent 1px, transparent 5px);
 }
 
 
 
-a:hover {
-  text-decoration: underline;
-  color: #f00000;
-}
+
 
 a {
   text-decoration: none;
-  color: #0064c1;
+  color: $color-blue;
 }
 
 .w > h1>a {
-  color: #333;
+  color: $color-black;
 }
 
 .w > h1>a:hover {
-  color: #333;
+  color: $color-black;
 }
 
 .navul {
   padding: 0;
   display: flex;
+  font-weight: 700;
+  align-items: center;
 }
 
 .navli {
   list-style-type: none;
   margin-right: 1rem;
   font-size: 1.125rem;
+}
+.navli a{
+  color: $color-black;
+}
+.curNav {
+  color: $color-blue;
+  font-size: 1.2em;
+ 
 }
 
 .postlistul {
@@ -125,19 +142,40 @@ a {
 .postlistli {
   list-style-type: none;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  // justify-content: space-between;
+  align-items: first baseline;
+  padding: 10px 0;
 
 }
 
-.curNav {
-  color: #333;
-  font-weight: 700;
+.postlistli  a,.pagebar a {
+  color: #000;
 }
 
-date {
-  color: #333;
+ 
+span.next{
+  color: #c3c3c3;
 }
+ 
+
+
+
+date  {
+  color: $color-lightGray;
+  font-size: 0.9em;
+  margin-right: 1em;
+}
+ 
+time {
+  color: $color-lightGray;
+  font-weight: 500;
+}
+.tag {
+  color: $color-lightGray;
+  font-weight: 500;
+}
+
+
 
 .pagebar {
   margin-top: 2rem;
@@ -147,7 +185,7 @@ date {
 }
 
 .page_number {
-  color: #333;
+  color: $color-black;
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
@@ -155,7 +193,7 @@ date {
 
 .largeli {
   font-weight: bolder;
-  color: #333;
+  color: $color-black;
   font-size: 1.6rem;
   padding: 2.25rem 1rem 0.5rem 0;
 }
@@ -174,4 +212,9 @@ date {
 
 .footer a {
   color: #808080;
+}
+
+a:hover {
+  text-decoration: underline;
+  color:$color-hove;
 }

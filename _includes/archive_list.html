@@ -28,6 +28,7 @@
     {%- assign ymPre = ymCur -%}
     
     <li class="postlistli">
+      <date datetime="{{post.date}}">{{- post.date | date: archive_date_titleformat }}</date>
       {%- if lock_path.size > 0  -%}
         {%- assign encid = "" | get_encrypt_id:post | default: "" -%}
         {%- if encid.size > 1  -%}
@@ -41,7 +42,7 @@
       {%- else -%}
         <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
       {%- endif -%}
-      <date datetime="{{post.date}}">{{- post.date | date: archive_date_titleformat }}</date>
+      
     </li>
 {%- endfor -%}
 </ul>

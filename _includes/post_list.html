@@ -14,6 +14,7 @@
   <ul class="postlistul">
     {%- for post in posts limit: include.limit -%}
         <li class="postlistli">
+          <date>{{- post.date | date: site.theme_config.date_format -}}</date>
           {%- if lock_path.size > 0 -%}
               {%- assign encid = "" | get_encrypt_id:post | default: "" -%}
               {%- if encid.size > 1  -%}
@@ -27,7 +28,7 @@
           {%- else -%}
             <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
           {%- endif -%}
-          <date>{{- post.date | date: site.theme_config.date_format -}}</date>
+          
         </li> 
     {%- endfor -%}
     {%- if include.show_more and limit_exceeded -%}

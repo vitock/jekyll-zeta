@@ -4,12 +4,25 @@
 {%- capture currentUrl -%}{{ page.url | relative_url}}{%- endcapture %}
 <nav>
     <ul class="navul">
+      
       {%-for item in site.theme_config.menu %}
         <li class="navli">
         {%- if item.url -%}
           {%- capture itemurl -%}{{ item.url | relative_url}}{%- endcapture -%}
+          
+        {%- assign iscurrent= false %}
+        {%- if currentUrl == itemurl -%}
+              {%- assign iscurrent= true %}
+        {%- else -%}
+              {%- for subpath in item.subpath %}
+                 {%- if currentUrl contains subpath %}
+                 {%- assign iscurrent= true %}
+                 {%- break %}
+                {%- endif  %}
+              {%- endfor %}
+        {%- endif %}
 
-          {%- if currentUrl == itemurl -%}
+          {%- if iscurrent  == true -%}
               <text class="curNav">{{ item.title }}</text>
           {%- else -%}
               <a href="{{ itemurl }}">{{ item.title }}</a>
