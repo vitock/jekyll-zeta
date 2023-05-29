@@ -4,10 +4,7 @@ $color-blue: #0064c1;
 $color-hove: #0064c1;
 $color-gray: #9ca3af;
 $color-lightGray: #9ca3af;
-
-
-
-
+ 
 li {
   padding: 0.2rem;
 }
@@ -86,16 +83,28 @@ tr:nth-child(even){
   background-color: #f5f5f5;
 }
 
-hr {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+// hr {
+//   margin-top: 2rem;
+//   margin-bottom: 2rem;
   
 
-  border: 0;
-  padding: 3px;
+//   border: 0;
+//   padding: 3px;
 
-  background: repeating-linear-gradient(135deg, #000 0px, #000 1px, transparent 1px, transparent 5px);
+//   background: repeating-linear-gradient(135deg, #000 0px, #000 1px, transparent 1px, transparent 5px);
+// }
+
+hr{
+  border: none;
+  margin: 2rem 0;
+  border:none;
+  text-align: center;
+  color: $color-gray;
+
+  &:before { content: '/////' }
+  &:after { content:  '/////' }
 }
+ 
 
 
 
