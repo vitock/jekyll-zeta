@@ -12,7 +12,7 @@ tags:
  - jekyll-zeta
 ---
 
-# mathjax $E=MC^2$
+mathjax $E=MC^2$
 
 $$
 \begin{bmatrix}

@@ -4,14 +4,34 @@ $color-blue: #0064c1;
 $color-hove: #0064c1;
 $color-gray: #9ca3af;
 $color-lightGray: #9ca3af;
- 
+$color-lightGrayBg: #F0f2f4;
 li {
   padding: 0.2rem;
 }
 
+main{
+  margin:  2.5em 0;
+}
 body{
   font-family: monospace;
   font-size: 1.1rem;
+  background-color: #fafafa;
+  margin: 0;
+
+  &::before{
+    content: "";
+    position: fixed;
+    border: solid 2px red;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+ 
+    background: url(../image/bg-line.svg)  ;
+    z-index: -1;
+    filter: grayscale(100);
+    opacity: 0.05;
+  }
 }
 
 article{
@@ -20,13 +40,15 @@ article{
 .w {
   margin: auto;
   max-width: 750px;
-  padding: 0 .5rem 5rem .5rem;
+  padding: 2em ;
   word-wrap: break-word;
+  background-color: white;
+  box-shadow: 0 2px 8px 0 #ddd
 }
 
 code.highlighter-rouge {
   color: $color-black;
-  background: #F0f2f4;
+  background: $color-lightGrayBg;
   border-radius: 3px;
   padding: 0 5px;
   margin: 5px;
@@ -34,7 +56,7 @@ code.highlighter-rouge {
 
 code {
   color: $color-black;
-  background: #F0f2f4;
+  background: $color-lightGrayBg;;
   max-height: 35rem;
 }
 
@@ -53,10 +75,28 @@ img {
 
 blockquote {
   font-style: italic;
-  border-left: .2rem solid #dfe2e5;
+  border-left: 5px solid #dfe2e5;
   color: #999;
-  padding: 0.25rem 0 .25rem 0.5rem;
-  margin: 1rem;
+  // padding: 2rem 0.25rem .25rem 0.25rem;
+  padding: 15px;
+  margin: 3em 0;
+  background-color: $color-lightGrayBg;
+
+  
+  &::before{
+    content: "";
+    display: block;
+    background: url(../image/quote.svg) no-repeat 50% 50%;
+    width: 27px;
+    height: 20px;
+    position: absolute;
+    z-index: 1;
+
+    margin-left: -10px;
+    margin-top: -24px;
+    opacity: 0.2;
+    
+  }
 }
 
 blockquote p {
@@ -104,11 +144,7 @@ hr{
   &:before { content: '/////' }
   &:after { content:  '/////' }
 }
- 
-
-
-
-
+  
 
 a {
   text-decoration: none;
@@ -143,24 +179,19 @@ a {
 .postlistli {
   list-style-type: none;
   display: flex;
-  // justify-content: space-between;
   align-items: first baseline;
-  padding: 10px 0;
+  padding: 5px 0;
 
 }
 
 .postlistli  a,.pagebar a ,.tags-tag{
   color: #000;
 }
-
  
 span.next{
   color: #c3c3c3;
 }
- 
-
-
-
+  
 date  {
   color: $color-lightGray;
   font-size: 0.9em;
@@ -222,7 +253,6 @@ a:hover {
 
 .curNav {
   color: $color-blue;
-  font-size: 1.2em;
 }
 
 .nav{
