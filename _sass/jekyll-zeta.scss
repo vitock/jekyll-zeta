@@ -15,23 +15,23 @@ main{
 body{
   font-family: monospace;
   font-size: 1.1rem;
-  background-color: #fafafa;
+  // background-color: #fafafa;
   margin: 0;
 
-  &::before{
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+  // &::before{
+  //   content: "";
+  //   position: fixed;
+  //   left: 0;
+  //   right: 0;
+  //   top: 0;
+  //   bottom: 0;
  
-    background-image: url(../image/bg-2.png)  ;
-    background-color: #fffef8   ;//#fffef9;
-    z-index: -1;
-    // filter: grayscale(0.8);
-    // opacity: 0.9;
-  }
+  //   // background-image: url(../image/bg-2.png)  ;
+  //   // background-color: #fffef8   ;//#fffef9;
+  //   z-index: -1;
+  //   // filter: grayscale(0.8);
+  //   // opacity: 0.9;
+  // }
 }
 
 article{
@@ -43,7 +43,7 @@ article{
   padding: 2em ;
   word-wrap: break-word;
   background-color: white;
-  box-shadow: 0 2px 8px 0 #ddd
+  // box-shadow: 0 2px 3px 0 #eee
 }
 
 code.highlighter-rouge {
