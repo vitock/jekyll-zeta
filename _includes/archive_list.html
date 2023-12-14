@@ -9,6 +9,7 @@
 
 {%- assign yCounter = 0 -%}
 {%- assign lock_path = site.theme_config.lock_path  -%}
+{%- assign lock_char = site.theme_config.lock_char | default: "🔑"  -%}
 <ul class="postlistul">
 {%- for post in posts limit: include.limit -%}
     {%- assign  ymCur = post.date | date: archive_date_format -%}  
@@ -29,19 +30,20 @@
     
     <li class="postlistli">
       <date datetime="{{post.date}}">{{- post.date | date: archive_date_titleformat }}</date>
-      {%- if lock_path.size > 0  -%}
+
         {%- assign encid = "" | get_encrypt_id:post | default: "" -%}
         {%- if encid.size > 1  -%}
         <div >
           <a href="{{ post.url | relative_url }} ">{{ post.title  }}</a>  
-          <img  style="width:12px;height:12px;display: inline;margin-left: 5px;" src="{{ lock_path | relative_url}}">
+          {%- if lock_path.size > 1  -%}
+          <img  style="width:12px;height:12px;display: inline;margin-left: 2px;" src="{{ lock_path | relative_url}}">
+          {%- else -%}
+            <text class="iconchar"> {{lock_char}} </text>
+          {%- endif -%}
         </div>
         {%- else -%}
           <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
         {%- endif -%}
-      {%- else -%}
-        <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
-      {%- endif -%}
       
     </li>
 {%- endfor -%}

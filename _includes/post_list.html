@@ -11,23 +11,24 @@
 {%- endif -%}
 {%- if posts.size > 0 -%}
    {%- assign lock_path = site.theme_config.lock_path  -%}
+   {%- assign lock_char = site.theme_config.lock_char | default: "🔑"  -%}
   <ul class="postlistul">
     {%- for post in posts limit: include.limit -%}
         <li class="postlistli">
           <date>{{- post.date | date: site.theme_config.date_format -}}</date>
-          {%- if lock_path.size > 0 -%}
               {%- assign encid = "" | get_encrypt_id:post | default: "" -%}
               {%- if encid.size > 1  -%}
               <div >
                 <a href="{{ post.url | relative_url }} ">{{ post.title  }}</a>  
+                {%- if lock_path.size > 1  -%}
                 <img  style="width:12px;height:12px;display: inline;margin-left: 2px;" src="{{ lock_path | relative_url}}">
+                {%- else -%}
+                  <text class="iconchar"> {{ lock_char }} </text>
+                {%- endif -%}
               </div>
               {%- else -%}
                 <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
               {%- endif -%}
-          {%- else -%}
-            <a href="{{ post.url | relative_url }}">{{ post.title  }}</a>
-          {%- endif -%}
           
         </li> 
     {%- endfor -%}

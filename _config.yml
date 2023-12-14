@@ -33,7 +33,8 @@ theme_config:
   show_more_text: 'show more ...'
   next_page_title: "next"
   previous_page_title: "previous"
-  lock_path: "assets/image/lock.svg"
+  # lock_path: "assets/image/lock3.png"
+  lock_char: '🔑'
   show_footnote: true
   menu:
     - title: Posts
