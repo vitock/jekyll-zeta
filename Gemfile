@@ -5,7 +5,7 @@ source "https://rubygems.org"
 
 gem "jekyll" ,"~>4.0.0"
 gem "kramdown-parser-gfm"
-gem "no-style-please2-plugins" ,"~>0.6.0"
+gem "no-style-please2-plugins" ,"~>0.7.0"
 gem "webrick"
 gem "jekyll-paginate" ,"~>1.0.0"
 

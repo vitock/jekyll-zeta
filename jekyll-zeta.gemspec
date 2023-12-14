@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-zeta"
-  spec.version       = "0.5.4"
+  spec.version       = "0.5.5"
   spec.authors       = ["vitock"]
   spec.email         = ["r"]
 
@@ -16,6 +16,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll", ">= 4.0.0"
   spec.add_runtime_dependency "jekyll-paginate", "~> 1.0.0"
   
-  spec.add_runtime_dependency "no-style-please2-plugins", "~>0.6.0"
+  spec.add_runtime_dependency "no-style-please2-plugins", "~>0.7.0"
 
 end
