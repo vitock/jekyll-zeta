@@ -248,6 +248,8 @@ img{
 
 }
 
-// .iconchar{
-//   filter: grayscale(0.2);
-// }
+.iconchar{
+  margin-left: 10px;
+  filter:   brightness(0.3);
+  font-size: 0.7em;
+}
