@@ -14,13 +14,17 @@
 {%- endcapture -%}
 
 {%- capture postdate -%}
-{{ post.date | date: '%Y-%m-%d' }}
+{{ post.date | date: '%Y-%m-%d'  }}
+{%- endcapture -%}
+
+
+{%- capture posttitlex -%}
+{{ post.title | replace: '"'," "}}
 {%- endcapture -%}
 
 
 {%- capture jsstr -%}
-
-{{ jsstr | append: url  | append:"\x01" | append: post.title | append:"\x01" | append: postdate   | append:"\n" }} 
+{{ jsstr | append: url  | append:"\x01" | append: posttitlex | append:"\x01" | append: postdate   | append:"\n" }} 
 {%- endcapture -%}
 {%- endfor -%}
 <div>
