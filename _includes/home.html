@@ -1,8 +1,15 @@
+
+
+ 
+{%- include heatmap.html -%}
+ 
+
 {%- assign titlelen = page.title.size -%}
 {%- if titlelen > 0 -%}
 <h2>{{ page.title }}</h2>
 {%- endif -%}
 {%-assign nextPage = site.paginate_path | replace: ':num', '2' -%}
+
 
 {%
   include post_list.html

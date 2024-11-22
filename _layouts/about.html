@@ -6,16 +6,10 @@ layout: default
 {%- if page.heatmap -%}
 {%- include heatmap.html -%}
 {%- endif -%}
+
 {%- assign titlelen = page.title.size -%}
 {%- if titlelen > 0 -%}
 <!-- <h2>{{ page.title }}</h2> -->
 {%- endif -%}
 
-{%-assign posts = site.posts-%}
-{%- if posts.size > 0 -%}
-  {%- include archive_list.html
-    collection=posts
-  -%}
-{%- endif -%}
-
- 
+{{ content }}

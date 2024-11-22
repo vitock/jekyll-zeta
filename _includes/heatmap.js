@@ -29,7 +29,9 @@ monthEle.className = "heatmap-month";
 Frag.appendChild(monthEle);
 const monthStr = _MonthStr.split(" ");
 
-var dateEnd;
+var dateEnd = new Date();
+
+{%- comment -%}
 if(_HeatMapType == '1'){
   dateEnd = new Date()
 }else if(_HeatMapType == '2'){
@@ -52,6 +54,8 @@ if(_HeatMapType == '1'){
 }else{
   dateEnd = new Date()
 }
+
+{% endcomment %}
 
 var nowM = dateEnd.getMonth();
 var nowWeek = dateEnd.getDay();

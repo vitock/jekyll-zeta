@@ -1,6 +1,7 @@
 ---
-layout: page
+layout: about
 title: About Title
+heatmap: true
 ---
 
 This is an example page!

@@ -9,9 +9,10 @@ $color-lightGrayBg: #F0f2f4;
 $heatFont:Georgia,"Nimbus Roman No9 L","Songti SC",STSong,"AR PL New Sung","AR PL SungtiL GB",NSimSun,SimSun,"TW\-Sung","WenQuanYi Bitmap Song","AR PL UMing CN","AR PL UMing HK","AR PL UMing TW","AR PL UMing TW MBE",sans-serif;
 
 $dbgBorder:none;//ssolid 1px red;
-$hmblocksize:12px;
+$hmbloksizeW:12px;
+$hmbloksizeH:15.2px;
 $dayGap:1px;
-$hmdaywidth: $dayGap * 52 + $hmblocksize * 53;
+$hmdaywidth: $dayGap * 52 + $hmbloksizeW * 53;
 $hmmonthWidth:40px;
 $hmmwidth: $hmmonthWidth + $hmdaywidth;
 li {
@@ -393,7 +394,7 @@ img{
 
   grid-auto-flow: row;
 
-  height: $hmblocksize * 7
+  height: $hmbloksizeW * 7
 }
  
 
@@ -418,9 +419,10 @@ img{
 
 .heatmap-day-cell{
 
-  border-radius: 3px;
+  border-radius: 2px;
   // height: 20px;
-  width: $hmblocksize;
+  width: $hmbloksizeW;
+  height: $hmbloksizeH;
 }
 
 .heatmap-day-cell a{
@@ -453,7 +455,6 @@ img{
 
 .heatmap-day-cell:hover .hm-tip{
   display: block;
-  gap:0.5em
 }
 
 .hm-tip{
@@ -465,13 +466,11 @@ img{
   color: white;
   padding: 10px;
   border-radius: 5px;
-  display: none; /* 初始隐藏 */
   z-index: 999;
 
   width: auto;
-
- 
   font-size: 0.8rem;
+  display: none;
 }
 
 .hm-date{

@@ -24,7 +24,7 @@
 {%- endcapture -%}
 {%- endfor -%}
 <div>
-<span class="heatmap-title">{{ heatMapTitle | site.theme_config.heatMapTitle | default: 'Last Year' }}</span>
+<span class="heatmap-title">{{ heatMapTitle | site.theme_config.heatMapTitle }}</span>
 <div class='heatmap' id="heatmap">
   
 
@@ -39,7 +39,7 @@
     {%- assign HeatMapType = site.theme_config.heatMapType  -%}
     
 
-    var _HeatMapType = "{{ HeatMapType | default:"1" }}"
+    var _HeatMapType = "{{ HeatMapType | default:'1' }}"
     var _MonthStr =  '{{ MothnStr | default: "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec" }}'
     var _showWeek =  '{{ HeatMapShowWeek | default: "Mon Wed Fri" }}';
     {% include heatmap.js %}
