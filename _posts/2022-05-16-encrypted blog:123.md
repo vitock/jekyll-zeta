@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 加密的Post，密码:abc   
-date: "2022-05-16 18:55:32"
+date: "2024-05-16 18:55:32"
 categories: 
  - blog 
 mathjax: false 
@@ -48,7 +48,7 @@ enc_tags:
 ---
 layout: post
 title: "encrypted blog:123"
-date: "2022-05-16 18:55:32"
+date: "2024-05-16 18:55:32"
 categories: 
  - blog 
 mathjax: false 

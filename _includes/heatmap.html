@@ -23,8 +23,12 @@
 {{ jsstr | append: url  | append:"\x01" | append: post.title | append:"\x01" | append: postdate   | append:"\n" }} 
 {%- endcapture -%}
 {%- endfor -%}
+<div>
+<span class="heatmap-title">{{ heatMapTitle | site.theme_config.heatMapTitle | default: '123' }}</span>
 <div class='heatmap' id="heatmap">
+  
 
+</div>
 </div>
 <script >
   (function(){

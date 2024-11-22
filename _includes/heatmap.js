@@ -24,9 +24,6 @@ const Frag = document.createDocumentFragment();
 const monthEle = document.createElement("div");
 monthEle.className = "heatmap-month";
 Frag.appendChild(monthEle);
-
-var empty = document.createElement("span");
-monthEle.appendChild(empty);
 const monthStr = _MonthStr.split(" ");
 
 var nowM = new Date().getMonth();
@@ -73,9 +70,6 @@ for (let c = 0; c < ColumnsCount; c++) {
     const date = new Date(nowStamp - (firstDateDayDiff - i) * 3600000 * 24);
     const month = date.getMonth() + 1
     let dateStr = `${date.getFullYear()}-${month < 10 ? '0' + month : month}-${date.getDate() < 10 ? '0' + date.getDate() :  date.getDate() }`
-    console.log(dateStr)
-
-
 
     var m = document.createElement("span");
     const arrPostInOneDay = Map[dateStr]
@@ -83,19 +77,34 @@ for (let c = 0; c < ColumnsCount; c++) {
     
 
     if (arrPostInOneDay ) {
+      var isDirectly = arrPostInOneDay.length == 1
       var tip = document.createElement("div");
+
+      if (isDirectly) {
+        var lnk = document.createElement('a');
+        lnk.href = arrPostInOneDay[0].url
+        m.appendChild(lnk)
+      }
+
       tip.className = "hm-tip";
       var desc = ''
       arrPostInOneDay.forEach(element => {
+
+        var lnk = document.createElement('a');
+        lnk.className = 'hm-tiplink'
+        lnk.href = element.url
+        tip.appendChild(lnk)
+
         var t = document.createElement('span')
         t.className = 'hm-date'
         t.innerText = dateStr.substring(5);
-        tip.appendChild(t);
+        lnk.appendChild(t);
 
+        
         var t2 = document.createElement('span')
         t2.className = 'hm-title'
         t2.innerText = element.title
-        tip.appendChild(t2);
+        lnk.appendChild(t2);
 
       });
       m.appendChild(tip);
