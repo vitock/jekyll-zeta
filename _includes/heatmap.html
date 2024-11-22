@@ -24,7 +24,7 @@
 {%- endcapture -%}
 {%- endfor -%}
 <div>
-<span class="heatmap-title">{{ heatMapTitle | site.theme_config.heatMapTitle | default: '123' }}</span>
+<span class="heatmap-title">{{ heatMapTitle | site.theme_config.heatMapTitle | default: 'Last Year' }}</span>
 <div class='heatmap' id="heatmap">
   
 
@@ -35,8 +35,11 @@
     var _GALLPOSTSTR = "{{jsstr}}";
     {%- assign MothStr = site.theme_config.heatMapMonth  -%}
     {%- assign HeatMapShowWeek = site.theme_config.heatMapShowWeek  -%}
+
+    {%- assign HeatMapType = site.theme_config.heatMapType  -%}
     
 
+    var _HeatMapType = "{{ HeatMapType | default:"1" }}"
     var _MonthStr =  '{{ MothnStr | default: "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec" }}'
     var _showWeek =  '{{ HeatMapShowWeek | default: "Mon Wed Fri" }}';
     {% include heatmap.js %}

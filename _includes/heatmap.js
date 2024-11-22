@@ -8,12 +8,15 @@ arr1.forEach(element => {
   var url = post[0]
   var title = post[1]
   var date = post[2]
-  var arrDatePost = Map[date]
+  if (date && title && url) {
+    var arrDatePost = Map[date]
   if (!arrDatePost ) {
     arrDatePost = []
     Map[date] = arrDatePost;
   }
   arrDatePost.push({title,url})
+  }
+  
 });
  
 
@@ -26,8 +29,33 @@ monthEle.className = "heatmap-month";
 Frag.appendChild(monthEle);
 const monthStr = _MonthStr.split(" ");
 
-var nowM = new Date().getMonth();
-var nowWeek = new Date().getDay();
+var dateEnd;
+if(_HeatMapType == '1'){
+  dateEnd = new Date()
+}else if(_HeatMapType == '2'){
+  
+  let chooseddate = ''
+  for (const key in Map) {
+    if (Object.prototype.hasOwnProperty.call(Map, key)) {
+      const element = Map[key];
+      if(element){
+        if(key && key > chooseddate){
+          chooseddate = key
+        }
+      }
+    }
+  }
+
+  dateEnd = new Date(chooseddate)
+  console.log(chooseddate,dateEnd,typeof chooseddate)
+
+}else{
+  dateEnd = new Date()
+}
+
+var nowM = dateEnd.getMonth();
+var nowWeek = dateEnd.getDay();
+var  endStamp = dateEnd.getTime()
 
 for (var i = 0; i < monthStr.length; i++) {
   var m = document.createElement("span");
@@ -57,7 +85,7 @@ const ColumnsCount = 53;
 const RowCount = 7;
 
 var  firstDateDayDiff = (ColumnsCount - 1) * RowCount + nowWeek;
-var  nowStamp = Date.now();
+
 
 console.log(nowWeek, firstDateDayDiff);
 
@@ -67,7 +95,7 @@ for (let c = 0; c < ColumnsCount; c++) {
       break
     }
     const i = c * RowCount + r ;
-    const date = new Date(nowStamp - (firstDateDayDiff - i) * 3600000 * 24);
+    const date = new Date(endStamp - (firstDateDayDiff - i) * 3600000 * 24);
     const month = date.getMonth() + 1
     let dateStr = `${date.getFullYear()}-${month < 10 ? '0' + month : month}-${date.getDate() < 10 ? '0' + date.getDate() :  date.getDate() }`
 
