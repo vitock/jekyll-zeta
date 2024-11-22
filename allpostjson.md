@@ -1,4 +1,4 @@
 ---
-layout: JSON
-permalink: allpostjson.html
+layout: heatmap
+permalink: heatmap.html
 ---

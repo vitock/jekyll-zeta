@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "公式 MathJax link"
-date: "2022-05-17 08:54:22"
+date: "2023-12-27 08:54:22"
 categories: 
  - blog 
 mathjax: true 

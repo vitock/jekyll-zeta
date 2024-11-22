@@ -1,0 +1,40 @@
+{%- if include.collection -%}
+  {%- assign posts = include.collection -%}  
+{%- else -%}
+  {%- assign posts = site.posts -%}
+{%- endif -%}
+
+{%- assign jsstr='' -%}
+{%- for post in posts limit: include.limit -%}
+
+
+
+{%- capture url -%}
+{{ post.url | relative_url }}
+{%- endcapture -%}
+
+{%- capture postdate -%}
+{{ post.date | date: '%Y-%m-%d' }}
+{%- endcapture -%}
+
+
+{%- capture jsstr -%}
+
+{{ jsstr | append: url  | append:"\x01" | append: post.title | append:"\x01" | append: postdate   | append:"\n" }} 
+{%- endcapture -%}
+{%- endfor -%}
+<div class='heatmap' id="heatmap">
+
+</div>
+<script >
+  (function(){
+    var _GALLPOSTSTR = "{{jsstr}}";
+    {%- assign MothStr = site.theme_config.heatMapMonth  -%}
+    {%- assign HeatMapShowWeek = site.theme_config.heatMapShowWeek  -%}
+    
+
+    var _MonthStr =  '{{ MothnStr | default: "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec" }}'
+    var _showWeek =  '{{ HeatMapShowWeek | default: "Mon Wed Fri" }}';
+    {% include heatmap.js %}
+  })()
+</script>
