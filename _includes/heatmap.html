@@ -4,29 +4,6 @@
   {%- assign posts = site.posts -%}
 {%- endif -%}
 
-{%- assign jsstr='' -%}
-{%- for post in posts limit: include.limit -%}
-
-
-
-{%- capture url -%}
-{{ post.url | relative_url }}
-{%- endcapture -%}
-
-{%- capture postdate -%}
-{{ post.date | date: '%Y-%m-%d'  }}
-{%- endcapture -%}
-
-
-{%- capture posttitlex -%}
-{{ post.title | replace: '"'," "}}
-{%- endcapture -%}
-
-
-{%- capture jsstr -%}
-{{ jsstr | append: url  | append:"\x01" | append: posttitlex | append:"\x01" | append: postdate   | append:"\n" }} 
-{%- endcapture -%}
-{%- endfor -%}
 <div>
 <span class="heatmap-title">{{ heatMapTitle | site.theme_config.heatMapTitle }}</span>
 <div class='heatmap' id="heatmap">
@@ -36,7 +13,7 @@
 </div>
 <script >
   (function(){
-    var _GALLPOSTSTR = "{{jsstr}}";
+
     {%- assign MothStr = site.theme_config.heatMapMonth  -%}
     {%- assign HeatMapShowWeek = site.theme_config.heatMapShowWeek  -%}
 
@@ -46,6 +23,8 @@
     var _HeatMapType = "{{ HeatMapType | default:'1' }}"
     var _MonthStr =  '{{ MothnStr | default: "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec" }}'
     var _showWeek =  '{{ HeatMapShowWeek | default: "Mon Wed Fri" }}';
+
+    var _allyearurl =  '{{ "assets/dyn/allyear.json" | relative_url }}';
     {% include heatmap.js %}
   })()
 </script>
