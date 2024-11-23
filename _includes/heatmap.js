@@ -34,8 +34,29 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
     if (yearCfg[preYear]) {
       arr.push(getYearData(preYear ))
     }
-    Promise.all(arr).then(d2=>{
-      updateCell({...d2[0],...d2[1]});
+    Promise.all(arr).then(alldata=>{
+      let combineData = {};
+      let d1 = alldata[0];
+      let d2 = alldata[1];
+      
+      for (const key in d1) {
+        if (Object.prototype.hasOwnProperty.call(d1, key)) {
+          const element = d1[key];
+          let keyNew = 'K1-' + key;
+          combineData[keyNew] = element
+        }
+      }
+
+      for (const key in d2) {
+        if (Object.prototype.hasOwnProperty.call(d2, key)) {
+          const element = d2[key];
+          let keyNew = 'K2-' + key;
+          combineData[keyNew] = element
+        }
+      }
+
+
+      updateCell(combineData);
     })
   })
 
@@ -52,6 +73,8 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
   function updateCell(data){
     if(!data)return
+
+    console.log(data)
 
     let daysEle = document.getElementById(dayEleId)
     let dayCells = daysEle.childNodes
@@ -173,7 +196,7 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
 
     function updateMultiDays(){
-      let day = 6;
+      let day = 13;
       while (day -- ) {
         update1Day();
       }
@@ -183,10 +206,7 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
       }
 
     }
-
-    setTimeout(() => {
-      requestAnimationFrame(updateMultiDays)
-    }, 200);
+    requestAnimationFrame(updateMultiDays)
     
     return
  
