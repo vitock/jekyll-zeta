@@ -10,7 +10,7 @@ $heatFont:Georgia,"Nimbus Roman No9 L","Songti SC",STSong,"AR PL New Sung","AR P
 
 $dbgBorder:none;//ssolid 1px red;
 $hmbloksizeW:11px;
-$hmbloksizeH:12.2px;
+$hmbloksizeH:13px;
 $dayGap:1px;
 $hmdaywidth: $dayGap * 52 + $hmbloksizeW * 53;
 $hmmonthWidth:40px;
@@ -360,7 +360,7 @@ img{
   grid-column-end: 3;
 
   display: grid;
-  grid-template-columns:repeat(12,1fr);
+  grid-template-columns: repeat(12,1fr);
 
   width: $hmdaywidth;
   border: $dbgBorder;
@@ -376,7 +376,6 @@ img{
   font-family:  $heatFont;
   font-size: 0.8rem;
 
-  border: $dbgBorder;
   height: 12px;
 
   padding: 0.2em 0;
@@ -434,7 +433,7 @@ img{
 
 
 .hm-check-nodata{
-  background-color: #edebf099;
+  background-color: #93d5dc;
 }
 
 .hm-check{
@@ -454,7 +453,7 @@ img{
 
 
 .hm-check-no-b{
-  background-color: #edebf099;
+  background-color: #edebf0aa;
 }
 
 .heatmap-day-cell:hover{

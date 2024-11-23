@@ -34,7 +34,7 @@ generate this page only once。
              [
                 {%- for item00 in item0.items -%}
                    {
-                    "title":"{{ item00.title | replace: '"', '-'}}",
+                    "title":"{{ item00.title | replace: '"', ' '}}",
                      "url":"{{ item00.url | relative_url}}",
                      "date": "{{ item00.date | date:"%Y-%m-%d"}}"
                    }{%- unless forloop.last -%},{%- endunless -%}
@@ -57,4 +57,5 @@ generate this page only once。
 
 
 
- 
+ <br>
+ {{ content }}

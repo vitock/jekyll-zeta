@@ -89,11 +89,35 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
     var G_idxOfDay = DayCount - 1;
 
+    function shuffle(array) {
+      let currentIndex = array.length;
+    
+      // While there remain elements to shuffle...
+      while (currentIndex != 0) {
+    
+        // Pick a remaining element...
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+    
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+    }
+
+    const SEQ = new Array(DayCount)
+    let tmp = DayCount
+    while (tmp -- > 0) {
+      SEQ[tmp] = tmp
+    }
+
+    shuffle(SEQ)
+
     function update1Day(){
       if (G_idxOfDay < 0) {
         return
       }
-      const idxOfDay = G_idxOfDay --;
+      const idxOfDay = SEQ[G_idxOfDay --];
       
       let dateKeyYmd = idx2Ymd(idxOfDay )
 
@@ -109,7 +133,6 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
       
       if ((arrPostInOneDay && arrPostInOneDay.length > 0 )) {
-        console.log(idxOfDay,dateKeyYmd,idx2Ymd(idxOfDay))
 
 
         let isDirectly = arrPostInOneDay.length == 1
@@ -150,7 +173,7 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
 
     function updateMultiDays(){
-      let day = 8;
+      let day = 6;
       while (day -- ) {
         update1Day();
       }
@@ -161,12 +184,13 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
     }
 
-    requestAnimationFrame(updateMultiDays)
+    setTimeout(() => {
+      requestAnimationFrame(updateMultiDays)
+    }, 200);
+    
     return
  
-
-
-    return
+ 
     
 
 
@@ -206,7 +230,7 @@ let nowM = dateEnd.getMonth();
 let nowWeek = dateEnd.getDay();
 
 
-for (let i = 0; i < monthStr.length; i++) {
+for (let i = 0; i < monthStr.length ; i++) {
   let m = document.createElement("span");
   m.className = "heatmap-month-cell";
   m.innerHTML = `${monthStr[(i + nowM + 1) % 12]}`;
