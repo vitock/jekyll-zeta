@@ -9,8 +9,8 @@ $color-lightGrayBg: #F0f2f4;
 $heatFont:Georgia,"Nimbus Roman No9 L","Songti SC",STSong,"AR PL New Sung","AR PL SungtiL GB",NSimSun,SimSun,"TW\-Sung","WenQuanYi Bitmap Song","AR PL UMing CN","AR PL UMing HK","AR PL UMing TW","AR PL UMing TW MBE",sans-serif;
 
 $dbgBorder:none;//ssolid 1px red;
-$hmbloksizeW:12px;
-$hmbloksizeH:15.2px;
+$hmbloksizeW:11px;
+$hmbloksizeH:12.2px;
 $dayGap:1px;
 $hmdaywidth: $dayGap * 52 + $hmbloksizeW * 53;
 $hmmonthWidth:40px;
@@ -393,8 +393,7 @@ img{
   
 
   grid-auto-flow: row;
-
-  height: $hmbloksizeW * 7
+  height: $hmbloksizeH * 7  + $dayGap * 6;
 }
  
 

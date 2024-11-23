@@ -4,3 +4,57 @@ layout: default
 <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" />
 <br/><br/><br/>
 {%- include heatmap.html -%}
+ 
+
+{% comment %}
+generate this page only once。
+{% endcomment %}
+{% assign ALLJSON = "{" %}
+
+{% assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y' " %}
+
+
+
+{%- for post in postsByYear -%}
+    {%- capture kv %}
+      "{{ post.name }}":1
+      {%- unless forloop.last -%},
+      {%- endunless -%}
+    {%- endcapture -%}
+    {% assign ALLJSON = ALLJSON | append:kv %}
+
+
+    {% assign itemM = post.items | group_by_exp: "post", "post.date | date: '%m' " %}
+
+    {%- capture  SingleYearJson -%}
+    {
+        
+        {%- for item0 in itemM %}
+    "{{item0.name }}":
+             [
+                {%- for item00 in item0.items -%}
+                   {
+                    "title":"{{ item00.title | replace: '"', '-'}}",
+                     "url":"{{ item00.url | relative_url}}",
+                     "date": "{{ item00.date | date:"%Y-%m-%d"}}"
+                   }{%- unless forloop.last -%},{%- endunless -%}
+                 {%- endfor -%}
+             ]   
+             {%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+    }
+    {%- endcapture -%}
+
+    {%- capture  FILENAME -%}
+    assets/dyn/{{post.name}}.json
+    {%- endcapture -%}
+
+    {{ SingleYearJson | write_file: FILENAME }}
+{%- endfor -%}
+
+{% assign ALLJSON = ALLJSON | append: " }" %}
+{{ ALLJSON | write_file: "assets/dyn/allyear.json" }}
+
+
+
+ 
