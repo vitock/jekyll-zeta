@@ -1,5 +1,10 @@
-;
+;!function(){
 
+function date2ymd(t){
+  let m = t.getMonth() + 1;
+  let d = t.getDate()
+  return `${t.getFullYear()}-${m< 10 ? '0' + m : m }-${d<10 ? '0'+d:d}`
+}
 
 
 const dateEnd = new Date();
@@ -30,11 +35,7 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
       arr.push(getYearData(preYear ))
     }
     Promise.all(arr).then(d2=>{
-      console.log(d2)
-      updateCell(d2[0])
-      updateCell(d2[1])
-      
-
+      updateCell({...d2[0],...d2[1]});
     })
   })
 
@@ -42,9 +43,15 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
     return DayCount - Math.floor((endStamp - new Date(ymd).getTime())/ (24 * 3600000)) -1
   }
 
+  function idx2Ymd(idx){
+    let t = new Date(endStamp - ( (DayCount - 1) - idx) * 3600000 * 24)
+    let m = t.getMonth() + 1
+    let d = t.getDate()
+    return `${t.getFullYear()}-${m< 10 ? '0' + m : m }-${d<10 ? '0'+d:d}`
+  }
+
   function updateCell(data){
     if(!data)return
-    let year = data.year;
 
     let daysEle = document.getElementById(dayEleId)
     let dayCells = daysEle.childNodes
@@ -69,52 +76,102 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
       }
     }
 
+
+
+    let ymdArr = []
+
     for (const dateKeyYmd in Map) {
       if (Object.prototype.hasOwnProperty.call(Map, dateKeyYmd)) {
-        const arrPostInOneDay = Map[dateKeyYmd];
-        const idx = getIndex(dateKeyYmd)
-        const dayCell = dayCells[idx]
-        dayCell.classList = `heatmap-day-cell ${!arrPostInOneDay ? 'hm-check-no':arrPostInOneDay.length > 1 ? 'hm-check2' : 'hm-check' }`  
+        ymdArr.push(dateKeyYmd)
+      } 
+    }
 
-        
-        if (arrPostInOneDay ) {
-          var isDirectly = arrPostInOneDay.length == 1
-          var tip = document.createElement("div");
-    
-          if (isDirectly) {
-            var lnk = document.createElement('a');
-            lnk.href = arrPostInOneDay[0].url
-            dayCell.appendChild(lnk)
-          }
-    
-          tip.className = "hm-tip";
-          var desc = ''
-          arrPostInOneDay.forEach(element => {
-    
-            var lnk = document.createElement('a');
-            lnk.className = 'hm-tiplink'
-            lnk.href = element.url
-            tip.appendChild(lnk)
-    
-            var t = document.createElement('span')
-            t.className = 'hm-date'
-            t.innerText = dateKeyYmd.substring(5);
-            lnk.appendChild(t);
-    
-            
-            var t2 = document.createElement('span')
-            t2.className = 'hm-title'
-            t2.innerText = element.title
-            lnk.appendChild(t2);
-    
-          });
-          dayCell.appendChild(tip);
-          
+
+    var G_idxOfDay = DayCount - 1;
+
+    function update1Day(){
+      if (G_idxOfDay < 0) {
+        return
+      }
+      const idxOfDay = G_idxOfDay --;
+      
+      let dateKeyYmd = idx2Ymd(idxOfDay )
+
+
+      let  arrPostInOneDay = Map[dateKeyYmd];
+      // debug
+      arrPostInOneDay = arrPostInOneDay 
+
+
+      const dayCell = dayCells[idxOfDay]
+      const nobg = parseInt(dateKeyYmd.substring(5,7))%2  == 1? 'hm-check-no-b' : 'hm-check-no-a';
+      dayCell.classList = `heatmap-day-cell ${!arrPostInOneDay ? nobg :arrPostInOneDay.length > 1 ? 'hm-check2' : 'hm-check' }`  
+
+      
+      if ((arrPostInOneDay && arrPostInOneDay.length > 0 )) {
+        console.log(idxOfDay,dateKeyYmd,idx2Ymd(idxOfDay))
+
+
+        let isDirectly = arrPostInOneDay.length == 1
+        let tip = document.createElement("div");
+
+        if (isDirectly) {
+          let lnk = document.createElement('a');
+          lnk.href = arrPostInOneDay[0].url
+          dayCell.appendChild(lnk)
         }
+
+        tip.className = "hm-tip";
+        let desc = ''
+        arrPostInOneDay.forEach(element => {
+
+          let lnk = document.createElement('a');
+          lnk.className = 'hm-tiplink'
+          lnk.href = element.url
+          tip.appendChild(lnk)
+
+          let t = document.createElement('span')
+          t.className = 'hm-date'
+          t.innerText = dateKeyYmd.substring(5);
+          lnk.appendChild(t);
+
+          
+          let t2 = document.createElement('span')
+          t2.className = 'hm-title'
+          t2.innerText = element.title
+          lnk.appendChild(t2);
+
+        });
+        dayCell.appendChild(tip);
         
       }
-    } 
+      
+    }
+
+
+    function updateMultiDays(){
+      let day = 8;
+      while (day -- ) {
+        update1Day();
+      }
+
+      if (G_idxOfDay >= 0) {
+        requestAnimationFrame(updateMultiDays)
+      }
+
+    }
+
+    requestAnimationFrame(updateMultiDays)
+    return
+ 
+
+
+    return
+    
+
+
   }
+
    
 
   function getYearData(year){
@@ -125,18 +182,17 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
     })
 
   }
+
+
+
+  
 }()
 
 
 
 ;(function initMap(){
 
-
-// 2024-09-09: {title date, url}
-var Map = {} 
- 
-
-var Father = document.getElementById("heatmap");
+let Father = document.getElementById("heatmap");
 
 const Frag = document.createDocumentFragment();
 
@@ -146,12 +202,12 @@ Frag.appendChild(monthEle);
 const monthStr = _MonthStr.split(" ");
 
 
-var nowM = dateEnd.getMonth();
-var nowWeek = dateEnd.getDay();
+let nowM = dateEnd.getMonth();
+let nowWeek = dateEnd.getDay();
 
 
-for (var i = 0; i < monthStr.length; i++) {
-  var m = document.createElement("span");
+for (let i = 0; i < monthStr.length; i++) {
+  let m = document.createElement("span");
   m.className = "heatmap-month-cell";
   m.innerHTML = `${monthStr[(i + nowM + 1) % 12]}`;
   monthEle.appendChild(m);
@@ -161,8 +217,8 @@ const weekEle = document.createElement("div");
 weekEle.className = "heatmap-week";
 const WeekStr = _showWeek.split(" ");
 
-for (var i = 0; i < WeekStr.length; i++) {
-  var m = document.createElement("div");
+for (let i = 0; i < WeekStr.length; i++) {
+  let m = document.createElement("div");
   m.className = "heatmap-week-cell";
   m.innerHTML = `<span>${WeekStr[i]}</span>`;
   weekEle.appendChild(m);
@@ -176,7 +232,7 @@ dayEle.className = "heatmap-day";
 dayEle.id = dayEleId;
 
 
-var  firstDateDayDiff = (ColumnsCount - 1) * RowCount + nowWeek;
+let  firstDateDayDiff = (ColumnsCount - 1) * RowCount + nowWeek;
 
 
 console.log(nowWeek, firstDateDayDiff);
@@ -187,8 +243,8 @@ for (let c = 0; c < ColumnsCount; c++) {
       break
     }
 
-    var m = document.createElement("span");
-    m.classList = `heatmap-day-cell hm-check-no`  
+    let m = document.createElement("span");
+    m.classList = `heatmap-day-cell hm-check-nodata`  
     dayEle.appendChild(m);
   }
 }
@@ -202,6 +258,6 @@ Father.append(Frag);
 
 
 
-
+}();
 
 

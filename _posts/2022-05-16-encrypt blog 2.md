@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "encrypt blog 2:12345"
-date: "2024-05-14 19:00:58"
+date: "2024-09-14 19:00:58"
 categories: 
  - blog 
 mathjax: false 

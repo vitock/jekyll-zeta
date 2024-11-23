@@ -432,6 +432,11 @@ img{
   overflow:hidden;
 }
 
+
+.hm-check-nodata{
+  background-color: #edebf099;
+}
+
 .hm-check{
   background-color: #40c463bb;
   position: relative;
@@ -443,8 +448,13 @@ img{
   position: relative;
 }
 
-.hm-check-no{
-  background-color: #edebf0;
+.hm-check-no-a{
+  background-color: #edebf0;;
+}
+
+
+.hm-check-no-b{
+  background-color: #edebf099;
 }
 
 .heatmap-day-cell:hover{
