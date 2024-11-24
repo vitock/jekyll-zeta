@@ -196,7 +196,7 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
 
     function updateMultiDays(){
-      let day = 13;
+      let day = heatMapLoadCount;
       while (day -- ) {
         update1Day();
       }

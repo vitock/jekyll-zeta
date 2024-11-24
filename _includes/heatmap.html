@@ -18,8 +18,11 @@
     {%- assign HeatMapShowWeek = site.theme_config.heatMapShowWeek  -%}
 
     {%- assign HeatMapType = site.theme_config.heatMapType  -%}
+
+    {%- assign heatMapLoadCount = site.theme_config.heatMapLoadCount | default: 8  -%}
     
 
+    const heatMapLoadCount = {{heatMapLoadCount}}
     var _HeatMapType = "{{ HeatMapType | default:'1' }}"
     var _MonthStr =  '{{ MothnStr | default: "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec" }}'
     var _showWeek =  '{{ HeatMapShowWeek | default: "Mon Wed Fri" }}';
