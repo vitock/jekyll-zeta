@@ -71,7 +71,7 @@ div.highlighter-rouge code {
   border-radius: 10px;
   display: block;
   overflow: auto;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 img {
@@ -176,16 +176,16 @@ a {
 
 nav{
  /* 关键样式 */
- background-color: transparent;
- background-image: radial-gradient(transparent 1px, #ffffff 1px);
- background-size: 4px 4px;
- backdrop-filter: saturate(50%) blur(10px);
- /* 这个只是固定在页面上面 */
- position: sticky;
- top: 0px;
+//  background-color: transparent;
+//  background-image: radial-gradient(transparent 1px, #ffffff 1px);
+//  background-size: 4px 4px;
+//  backdrop-filter: saturate(50%) blur(10px);
+//  /* 这个只是固定在页面上面 */
+//  position: sticky;
+//  top: 0px;
 
  align-content: center;
- z-index: 1000;
+//  z-index: ;
 }
  
 .navul {
@@ -320,10 +320,13 @@ pre>code{
   box-shadow: 0px 0px 8px   #000;
 }
 
-pre>code::before {
+
+pre:has(>code)::before {
   content: url('../image/dots.svg');
   display: block;  
-  margin-top:-1rem;
+  position: absolute;
+  margin-left: 10px;
+  z-index: 1000;
 }
  
 
