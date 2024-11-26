@@ -1,0 +1,39 @@
+<div class="sidebar">
+<div class="sidecontent">
+<nav>
+  <ul class="navul">
+    
+    {%-for item in site.theme_config.menu %}
+      <li class="navli">
+      {%- if item.url -%}
+        {%- capture itemurl -%}{{ item.url | relative_url}}{%- endcapture -%}
+        
+      {%- assign iscurrent= false %}
+      {%- if currentUrl == itemurl -%}
+            {%- assign iscurrent= true %}
+      {%- else -%}
+            {%- for subpath in item.subpath %}
+               {%- if currentUrl contains subpath %}
+               {%- assign iscurrent= true %}
+               {%- break %}
+              {%- endif  %}
+            {%- endfor %}
+      {%- endif %}
+
+        {%- if iscurrent  == true -%}
+            <a href="{{ itemurl }}" class="curNav">{{ item.title }}</a>
+        {%- else -%}
+            <a href="{{ itemurl }}" class="nav">{{ item.title }}</a>
+        {%- endif - -%}
+        
+      {%- else -%}
+        {{ item.title }}
+      {%- endif -%}
+      </li>
+    {%-endfor-%}
+  </ul>
+</nav>
+
+
+</div>
+</div>

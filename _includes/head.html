@@ -23,10 +23,8 @@
   {%- endif -%}
 
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
-  {%- if site.theme_config.combine_css_html -%}
-  <style>
-    {%- include main.css -%}
-  </style>
+  {%- if site.theme_config.navbarPosition == 'left' -%}
+  <link rel="stylesheet" href="{{ "/assets/css/left.css" | relative_url }}" />
   {%- else -%}
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" />
   {%- endif -%}
