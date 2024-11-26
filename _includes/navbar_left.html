@@ -1,10 +1,10 @@
 <div class="sidebar">
 <div class="sidecontent">
+{%- capture currentUrl -%}{{ page.url | relative_url}}{%- endcapture %}
 <nav>
   <ul class="navul">
-    
     {%-for item in site.theme_config.menu %}
-      <li class="navli">
+      <li class="navli   {% if iscurrent  == true -%} curNav {%- endif -%}"">
       {%- if item.url -%}
         {%- capture itemurl -%}{{ item.url | relative_url}}{%- endcapture -%}
         
@@ -20,11 +20,7 @@
             {%- endfor %}
       {%- endif %}
 
-        {%- if iscurrent  == true -%}
-            <a href="{{ itemurl }}" class="curNav">{{ item.title }}</a>
-        {%- else -%}
             <a href="{{ itemurl }}" class="nav">{{ item.title }}</a>
-        {%- endif - -%}
         
       {%- else -%}
         {{ item.title }}
