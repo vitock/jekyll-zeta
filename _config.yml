@@ -17,6 +17,7 @@ favicon: "logo.png" # name+extension of favicon (which must be put on the root f
 
 theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
+  navbarPosition: top # left or top
   date_format: "%m/%d" # customize how date is formatted
   post_date_format: "%Y/%m/%d"
   encrypt_title: "Content is Encryped :)"

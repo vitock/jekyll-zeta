@@ -1,0 +1,39 @@
+<div class="sidebar">
+<div class="sidecontent">
+{%- capture currentUrl -%}{{ page.url | relative_url}}{%- endcapture %}
+<img src="{{'assets/image/avartar.png' | relative_url }}"  class="avatar"/> 
+
+
+<nav>
+  <ul class="navul">
+    {%-for item in site.theme_config.menu %}
+
+      {%- if item.url -%}
+        {%- capture itemurl -%}{{ item.url | relative_url}}{%- endcapture -%}
+        
+      {%- assign iscurrent= false %}
+      {%- if currentUrl == itemurl -%}
+            {%- assign iscurrent= true %}
+      {%- else -%}
+            {%- for subpath in item.subpath %}
+               {%- if currentUrl contains subpath %}
+                  {%- assign iscurrent= true %}
+                  {%- break %}
+              {%- endif  %}
+            {%- endfor %}
+      {%- endif %}
+      <li class="{% if iscurrent  == true -%}navli curNav{%-else -%}navli{%- endif -%}">
+
+      <a href="{{ itemurl }}" class="nav">{{ item.title }}</a>
+        
+      {%- else -%}
+        {{ item.title }}
+      {%- endif -%}
+      </li>
+    {%-endfor-%}
+  </ul>
+</nav>
+
+
+</div>
+</div>

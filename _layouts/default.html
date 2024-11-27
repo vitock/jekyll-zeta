@@ -3,7 +3,10 @@
   {%- include head.html -%}
   <body a="{{ site.theme_config.appearance | default: "auto" }}">
     <main class="page-content" aria-label="Content">
-      
+
+      {%- if site.theme_config.navbarPosition == 'left' -%}
+        {%- include page_frame_left.html  -%}
+      {%- else  -%}
       <div class="w">
         {%- include navbar.html -%}
         {{ content }}
@@ -16,6 +19,9 @@
         </footer>
         {%- endif -%}
       </div>
+      {%- endif -%}
+      
+     
     </main>
 
     {%-if site.goat_counter and jekyll.environment == "production"-%}

@@ -1,0 +1,99 @@
+@import "common";
+@import "heatmap";
+
+
+
+ 
+$contentWidth:52rem;
+$siderbarW:8rem;
+body{
+  font-size: 1.25rem;
+}
+
+
+body{
+  padding: 0;
+}
+
+ 
+.w {
+  margin:auto;
+  max-width:$contentWidth ;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 4rem ;
+  padding-bottom: 4rem ;
+  word-wrap: break-word;
+  background-color: white;
+  
+}
+
+
+.sidebar{
+  
+  height: 100%;
+  padding-right: 1rem;
+  padding-top: 6rem;
+  position: fixed;
+  top: 0;
+  width: $siderbarW;
+  right: calc(50% + #{$contentWidth} / 2  );
+
+}
+
+.sidecontent{
+  // position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  
+}
+
+.sidetitle{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.navul {
+  padding:  0;
+  display:block;
+  font-weight: 700;
+  align-items: center;
+}
+
+
+.navli{
+  padding:  1rem 0;
+}
+
+nav{
+  text-align: end;
+  padding-right: 2rem;
+}
+
+
+.rightsidecontent{
+  margin:auto;
+  max-width: $contentWidth +  $siderbarW ;
+ 
+  padding-left: $siderbarW ;
+  // justify-content: center;
+}
+ 
+
+// @media screen and (max-width: 90000px){
+//   $siderbarW:0;
+//   .navul{
+//     display: flex;
+//   }
+//   .sidebar{
+
+//     padding-right: 1rem;
+//     padding-top: 6rem;
+//     width: $siderbarW;
+  
+//   }
+  
+// }
+
+
+

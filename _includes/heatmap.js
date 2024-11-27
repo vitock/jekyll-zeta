@@ -1,3 +1,5 @@
+
+
 ;!function(){
 
 function date2ymd(t){
@@ -6,8 +8,8 @@ function date2ymd(t){
   return `${t.getFullYear()}-${m< 10 ? '0' + m : m }-${d<10 ? '0'+d:d}`
 }
 
+const dateEnd = endYear && endYear.length == 4 ? new Date(`${endYear}-12-31`) : new Date();
 
-const dateEnd = new Date();
 const  endStamp = dateEnd.getTime()
 const dayEleId = Math.random().toString(16).substring(2);
 let arr = _allyearurl.split('/');
@@ -141,23 +143,13 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
         return
       }
       const idxOfDay = SEQ[G_idxOfDay --];
-      
       let dateKeyYmd = idx2Ymd(idxOfDay )
-
-
       let  arrPostInOneDay = Map[dateKeyYmd];
-      // debug
-      arrPostInOneDay = arrPostInOneDay 
-
-
       const dayCell = dayCells[idxOfDay]
       const nobg = parseInt(dateKeyYmd.substring(5,7))%2  == 1? 'hm-check-no-b' : 'hm-check-no-a';
       dayCell.classList = `heatmap-day-cell ${!arrPostInOneDay ? nobg :arrPostInOneDay.length > 1 ? 'hm-check2' : 'hm-check' }`  
 
-      
       if ((arrPostInOneDay && arrPostInOneDay.length > 0 )) {
-
-
         let isDirectly = arrPostInOneDay.length == 1
         let tip = document.createElement("div");
 
@@ -197,6 +189,9 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
     function updateMultiDays(){
       let day = heatMapLoadCount;
+      if (!day || day <= 0) {
+        day = 8;
+      }
       while (day -- ) {
         update1Day();
       }
@@ -209,11 +204,7 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
     requestAnimationFrame(updateMultiDays)
     
     return
- 
- 
-    
-
-
+  
   }
 
    
@@ -236,7 +227,7 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
 ;(function initMap(){
 
-let Father = document.getElementById("heatmap");
+let Father = document.getElementById(heatmapid);
 
 const Frag = document.createDocumentFragment();
 
@@ -303,5 +294,3 @@ Father.append(Frag);
 
 
 }();
-
-

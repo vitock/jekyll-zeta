@@ -17,11 +17,23 @@
         {%- if ymPre != "" -%}
              </ul>
         {%- endif -%}
-      {%- if yCounter == 0 -%}
-      <li class="postlistli largeli largeli0">{{ymCur}}</li> 
+
+      {% if include.showheatmap == 1 or include.showheatmap == true  %}
+         <div class=archive-map>
+         {%- include heatmap.html endYear=ymCur  title=ymCur -%}
+         </div >
       {%- else -%}
-        <li class="postlistli largeli">{{ymCur}}</li> 
-      {%- endif -%}
+        {%- if yCounter == 0 -%}
+        <li class="postlistli largeli largeli0">{{ymCur}}</li> 
+        
+        {%- else -%}
+          <li class="postlistli largeli">{{ymCur}}</li> 
+        {%- endif -%}
+      {%  endif %}
+      
+      
+
+      
       
       {%- assign yCounter = yCounter | plus:1 -%}
       <ul class="postlistul">

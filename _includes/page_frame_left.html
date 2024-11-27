@@ -1,0 +1,20 @@
+<header>
+    {%- include navbar_left.html -%}
+</header>
+<section class="rightsidecontent">
+<div class="w">
+    
+    {{ content }} 
+
+    {%- assign footnote = site.theme_config.show_footnote  -%}
+    {%- if footnote == true   -%}
+    
+     <footer class="footer">
+      <p> Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vitock/jekyll-zeta">Jekyll-zeta</a>
+     </p>
+    </footer>
+    {%- endif -%}
+
+ 
+</div>
+</section>
