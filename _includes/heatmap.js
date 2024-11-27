@@ -1,3 +1,5 @@
+
+
 ;!function(){
 
 function date2ymd(t){
@@ -6,8 +8,8 @@ function date2ymd(t){
   return `${t.getFullYear()}-${m< 10 ? '0' + m : m }-${d<10 ? '0'+d:d}`
 }
 
+const dateEnd = endYear && endYear.length == 4 ? new Date(`${endYear}-12-31`) : new Date();
 
-const dateEnd = new Date();
 const  endStamp = dateEnd.getTime()
 const dayEleId = Math.random().toString(16).substring(2);
 let arr = _allyearurl.split('/');
@@ -236,7 +238,7 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
 ;(function initMap(){
 
-let Father = document.getElementById("heatmap");
+let Father = document.getElementById(heatmapid);
 
 const Frag = document.createDocumentFragment();
 
@@ -303,5 +305,3 @@ Father.append(Frag);
 
 
 }();
-
-
