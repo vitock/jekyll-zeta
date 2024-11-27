@@ -4,7 +4,7 @@
 <nav>
   <ul class="navul">
     {%-for item in site.theme_config.menu %}
-      <li class="{% if iscurrent  == true -%}navli curNav{%-else -%}navli{%- endif -%}">
+
       {%- if item.url -%}
         {%- capture itemurl -%}{{ item.url | relative_url}}{%- endcapture -%}
         
@@ -14,13 +14,14 @@
       {%- else -%}
             {%- for subpath in item.subpath %}
                {%- if currentUrl contains subpath %}
-               {%- assign iscurrent= true %}
-               {%- break %}
+                  {%- assign iscurrent= true %}
+                  {%- break %}
               {%- endif  %}
             {%- endfor %}
       {%- endif %}
+      <li class="{% if iscurrent  == true -%}navli curNav{%-else -%}navli{%- endif -%}">
 
-            <a href="{{ itemurl }}" class="nav">{{ item.title }}</a>
+      <a href="{{ itemurl }}" class="nav">{{ item.title }}</a>
         
       {%- else -%}
         {{ item.title }}

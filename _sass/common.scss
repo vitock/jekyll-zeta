@@ -264,8 +264,10 @@ li {
     color:$color-hove;
   }
   
-  .curNav {
-    color: $color-blue;
+  .curNav > .nav{
+
+
+    color: #55bb8a;
   }
   
   .nav{
@@ -322,3 +324,7 @@ li {
     font-size: 0.6em;
 }
   
+
+.archive-map{
+  padding-bottom: 1rem;
+}
