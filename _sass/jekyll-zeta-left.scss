@@ -18,17 +18,16 @@ body{
  
 .w {
   margin:auto;
-  width: $contentWidth + $siderbarW;
-
-  padding-left: $siderbarW + 4rem;
+  max-width:$contentWidth ;
+  padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 4rem ;
   padding-bottom: 4rem ;
   word-wrap: break-word;
   background-color: white;
-
   
 }
+
 
 .sidebar{
   
@@ -41,6 +40,7 @@ body{
   right: calc(50% + #{$contentWidth} / 2  );
 
 }
+
 .sidecontent{
   // position: absolute;
   left: 2rem;
@@ -64,5 +64,28 @@ nav{
   text-align: end;
   padding-right: 2rem;
 }
+
+
+.rightsidecontent{
+  margin:auto;
+  max-width: $contentWidth +  $siderbarW ;
+  border:solid 1px red;
+  padding-left: $siderbarW ;
+  // justify-content: center;
+}
  
- 
+
+// @media screen and (max-width: 90000px){
+//   $siderbarW:0;
+//   .navul{
+//     display: flex;
+//   }
+//   .sidebar{
+
+//     padding-right: 1rem;
+//     padding-top: 6rem;
+//     width: $siderbarW;
+  
+//   }
+  
+// }
