@@ -5,17 +5,17 @@
   {%- assign posts = site.posts -%}
 {%- endif -%}
 
-
-{%- capture datemapid -%}
-{% increment datemapid %}
+{%- capture datemapidOnPage -%}
+{% increment datemapidOnPage %}
 {%- endcapture -%}
-{% assign mapEleId = "heatmap-" | append: datemapid %}
+{% assign mapEleId = "heatmap-" | append: datemapidOnPage %}
 <div class="heatmap-title">{{ include.title | default :""  }}</div>
 
 <div class='heatmap' id="{{mapEleId}}">
   
 </div>
-{%- if datemapid == '0' -%}
+{%- if child_initialized != true -%}
+{%-  assign child_initialized = true -%}
 {% comment %}
   只加载一次
 {% endcomment %}

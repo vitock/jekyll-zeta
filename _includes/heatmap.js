@@ -143,23 +143,13 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
         return
       }
       const idxOfDay = SEQ[G_idxOfDay --];
-      
       let dateKeyYmd = idx2Ymd(idxOfDay )
-
-
       let  arrPostInOneDay = Map[dateKeyYmd];
-      // debug
-      arrPostInOneDay = arrPostInOneDay 
-
-
       const dayCell = dayCells[idxOfDay]
       const nobg = parseInt(dateKeyYmd.substring(5,7))%2  == 1? 'hm-check-no-b' : 'hm-check-no-a';
       dayCell.classList = `heatmap-day-cell ${!arrPostInOneDay ? nobg :arrPostInOneDay.length > 1 ? 'hm-check2' : 'hm-check' }`  
 
-      
       if ((arrPostInOneDay && arrPostInOneDay.length > 0 )) {
-
-
         let isDirectly = arrPostInOneDay.length == 1
         let tip = document.createElement("div");
 
@@ -199,6 +189,9 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
 
     function updateMultiDays(){
       let day = heatMapLoadCount;
+      if (day <= 0) {
+        day = 8;
+      }
       while (day -- ) {
         update1Day();
       }
@@ -211,11 +204,7 @@ const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
     requestAnimationFrame(updateMultiDays)
     
     return
- 
- 
-    
-
-
+  
   }
 
    
