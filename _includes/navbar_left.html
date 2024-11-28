@@ -1,7 +1,12 @@
 <div class="sidebar">
 <div class="sidecontent">
 {%- capture currentUrl -%}{{ page.url | relative_url}}{%- endcapture %}
-<a href="{{ '/' | relative_url }}"><img src="{{'assets/image/avartar.png' | relative_url }}"  class="avatar"/>  </a>
+<div class="avatar-title">
+  <a href="{{ '/' | relative_url }}"  ><img src="{{'assets/image/avatar.png' | relative_url }}"  class="avatar"/> </a>
+
+  <a href="{{ '/' | relative_url }}" class="nav-title"  > {{site.title}} </a>
+</div>
+
 
 
 <nav>
