@@ -1,7 +1,7 @@
 @import "common";
 @import "heatmap";
 
-$mobileWidth:500px;
+$mobileWidth:567px;
 
 .nav-title{
   color: $color-black;
@@ -12,16 +12,17 @@ $mobileWidth:500px;
  
 .nav-title:hover{
   color:$color-hove;
+  text-align: center;
 }
 
 // pc
 @media only screen and (min-width: #{$mobileWidth}) {
-
-
-
 .avatar-title{
+  display: flex;
+  flex-direction: column;
   align-items: center;
   padding: 1rem 0 1rem 0;
+  justify-content: center;
 }
 
   $contentWidth: 52rem;
@@ -99,10 +100,13 @@ $mobileWidth:500px;
   }
 
 
-.avatar-title{
-  display: flex;
-  align-items: center;
-}
+  .avatar-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    justify-content: center;
+  }
   
 
   .w {
