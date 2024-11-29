@@ -19,9 +19,9 @@ theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
   navbarPosition: left # left or top
   date_format: "%m/%d" # customize how date is formatted
-  post_date_format: "%Y/%m/%d"
+  post_date_format: "%Y/%m/%d %a"
   encrypt_title: "Content is Encryped :)"
-  # encrypt_clear_btn: "清空缓存密码"
+  # encrypt_clear_btn: "清空缓存密码"A
   # decrypt_btn: 解密
   # encrypt_btn: 重新加密
   tag_showall: true

@@ -1,4 +1,7 @@
 ;!(function () {
+  
+  const WeeKStart = parseInt(WeeKStartStr)
+
 
   var GDATA = window._G_DATA;
   if (!GDATA) {
@@ -22,9 +25,10 @@
   arr.pop();
   const jsonUrlBase = arr.join("/");
 
+  const nLastColumnCount = (dateEnd.getDay() -  WeeKStart + 7) % 7 + 1
   const ColumnsCount = 53;
   const RowCount = 7;
-  const DayCount = (ColumnsCount - 1) * RowCount + dateEnd.getDay() + 1;
+  const DayCount = (ColumnsCount - 1) * RowCount + nLastColumnCount;
 
   let queue  = window._y_queue || []
   window._y_queue = queue;
@@ -301,7 +305,7 @@
     const monthStr = _MonthStr.split(" ");
 
     let nowM = dateEnd.getMonth();
-    let nowWeek = dateEnd.getDay();
+    let nowWeekIdx = nLastColumnCount - 1;
 
     for (let i = 0; i < monthStr.length; i++) {
       let m = document.createElement("span");
@@ -315,9 +319,10 @@
     const WeekStr = _showWeek.split(" ");
 
     for (let i = 0; i < WeekStr.length; i++) {
+      const idx = (i + WeeKStart) % 7
       let m = document.createElement("div");
       m.className = "heatmap-week-cell";
-      m.innerHTML = `<span>${WeekStr[i]}</span>`;
+      m.innerHTML = i % 2  ?  `<span>${WeekStr[idx]}</span>` : ''
       weekEle.appendChild(m);
     }
 
@@ -328,13 +333,11 @@
     dayEle.className = "heatmap-day";
     dayEle.id = dayEleId;
 
-    let firstDateDayDiff = (ColumnsCount - 1) * RowCount + nowWeek;
-
-    // console.log(nowWeek, firstDateDayDiff);
+    // console.log(nowWeekIdx, firstDateDayDiff);
 
     for (let c = 0; c < ColumnsCount; c++) {
       for (let r = 0; r < RowCount; r++) {
-        if (r > nowWeek && c == ColumnsCount - 1) {
+        if (r > nowWeekIdx && c == ColumnsCount - 1) {
           break;
         }
 
