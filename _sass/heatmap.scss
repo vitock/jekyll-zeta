@@ -120,6 +120,10 @@ $heatFont:Georgia,"Nimbus Roman No9 L","Songti SC",STSong,"AR PL New Sung","AR P
   background-color: #edebf0aa;
 }
 
+.hm-check-notyet{
+  visibility: hidden;
+}
+
 .heatmap-day-cell:hover{
   transform: scale(1.3);
   z-index: 999;

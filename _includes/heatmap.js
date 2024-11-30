@@ -16,8 +16,10 @@
     return `${t.getFullYear()}-${m < 10 ? "0" + m : m}-${d < 10 ? "0" + d : d}`;
   }
 
+  const strictMod =  endYear && endYear.length == 4;
+  const maxDateYmd = `${endYear}-12-31`
   const dateEnd =
-    endYear && endYear.length == 4 ? new Date(`${endYear}-12-31`) : new Date();
+    endYear && endYear.length == 4 ? new Date(maxDateYmd) : new Date();
 
   const endStamp = dateEnd.getTime();
   const dayEleId = Math.random().toString(16).substring(2);
@@ -177,6 +179,7 @@
 
       shuffle(SEQ);
 
+      const minYmd = `${endYear - 1}${maxDateYmd.substring(4)}`
       function update1Day() {
         if (G_idxOfDay < 0) {
           return;
@@ -184,8 +187,19 @@
         const idxOfDay = SEQ[G_idxOfDay--];
         let dateKeyYmd = idx2Ymd(idxOfDay);
         let arrPostInOneDay = Map[dateKeyYmd];
+
+        let hideblock = false
+        if (strictMod) {
+          hideblock = dateKeyYmd <= minYmd;
+          
+        }
+
         const dayCell = dayCells[idxOfDay];
-        const nobg =
+        if (hideblock) {
+          dayCell.classList = 'heatmap-day-cell hm-check-notyet'
+        }else{
+          
+          const nobg =
           parseInt(dateKeyYmd.substring(5, 7)) % 2 == 1
             ? "hm-check-no-b"
             : "hm-check-no-a";
@@ -227,6 +241,9 @@
           });
           dayCell.appendChild(tip);
         }
+        }
+
+        
       }
 
       function updateMultiDays() {
