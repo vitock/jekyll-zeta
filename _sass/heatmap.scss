@@ -124,6 +124,29 @@ $heatFont:Georgia,"Nimbus Roman No9 L","Songti SC",STSong,"AR PL New Sung","AR P
   visibility: hidden;
 }
 
+
+$bh:2px;
+.hm-check-future-b{
+  background:repeating-linear-gradient(
+    45deg,            /* 斜条纹角度 */
+    #edebf0aa,          /* 第一种颜色 */
+    #edebf0aa  $bh,     /* 第一种颜色的宽度 */
+    #ffffff $bh ,     /* 第二种颜色的起点 */
+    #ffffff $bh * 2      /* 第二种颜色的宽度 */
+)
+}
+
+
+.hm-check-future-a{
+  background:repeating-linear-gradient(
+    45deg,            /* 斜条纹角度 */
+    #ffffff,          /* 第一种颜色 */
+    #ffffff  $bh,     /* 第一种颜色的宽度 */
+    #edebf0 $bh  ,     /* 第二种颜色的起点 */
+    #edebf0 $bh * 2      /* 第二种颜色的宽度 */
+)
+}
+
 .heatmap-day-cell:hover{
   transform: scale(1.3);
   z-index: 999;

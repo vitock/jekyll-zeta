@@ -16,6 +16,7 @@
     return `${t.getFullYear()}-${m < 10 ? "0" + m : m}-${d < 10 ? "0" + d : d}`;
   }
 
+  const todayYmd = date2ymd(new Date())
   const strictMod =  endYear && endYear.length == 4;
   const maxDateYmd = `${endYear}-12-31`
   const dateEnd =
@@ -191,13 +192,17 @@
         let hideblock = false
         if (strictMod) {
           hideblock = dateKeyYmd <= minYmd;
-          
         }
+
+        let isFuture = dateKeyYmd > todayYmd;
 
         const dayCell = dayCells[idxOfDay];
         if (hideblock) {
           dayCell.classList = 'heatmap-day-cell hm-check-notyet'
-        }else{
+        } if(isFuture){
+          dayCell.classList = parseInt(dateKeyYmd.substring(5, 7)) % 2 == 1 ? 'heatmap-day-cell hm-check-future-b' : 'heatmap-day-cell hm-check-future-a'
+        }
+        else{
           
           const nobg =
           parseInt(dateKeyYmd.substring(5, 7)) % 2 == 1
