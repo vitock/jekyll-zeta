@@ -199,7 +199,7 @@
         const dayCell = dayCells[idxOfDay];
         if (hideblock) {
           dayCell.classList = 'heatmap-day-cell hm-check-notyet'
-        } if(isFuture){
+        }else if(isFuture){
           dayCell.classList = parseInt(dateKeyYmd.substring(5, 7)) % 2 == 1 ? 'heatmap-day-cell hm-check-future-b' : 'heatmap-day-cell hm-check-future-a'
         }
         else{
