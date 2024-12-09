@@ -1,4 +1,5 @@
 <div class="sidebar">
+{% unless page.hideNavBar %}
 <div class="sidecontent">
 {%- capture currentUrl -%}{{ page.url | relative_url}}{%- endcapture %}
 <div class="avatar-title">
@@ -41,4 +42,6 @@
 
 
 </div>
+
+{% endunless %}
 </div>
