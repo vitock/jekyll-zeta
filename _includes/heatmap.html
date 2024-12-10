@@ -34,7 +34,7 @@
     const WeeKStartStr = "{{ site.theme_config.heatMapWeekStart | default: 0 }}" ;//  0 sunday 1 monday 2. tuesday ...
 
     const heatMapLoadCount = {{heatMapLoadCount}};
-    var _MonthStr =  '{{ MothnStr | default: "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec" }}';
+    var _MonthStr =  '{{ MothStr | default: "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec" }}';
     var _showWeek =  '{{ HeatMapShowWeek | default: "Sun Mon Tue Wed Thu Fri Sat" }}';
     var _allyearurl =  '{{ "assets/dyn/allyear.json" | relative_url }}';
     {% include heatmap.js  %}
