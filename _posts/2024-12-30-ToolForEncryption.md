@@ -22,7 +22,7 @@ tags:
         margin: 10px auto ;
         padding: 10px;
         background-color: #f1f1f1;
-        border-radius: 5px;
+        border-radius: 10px;
         border: none;
         
         margin-left: 10px;
@@ -60,8 +60,10 @@ tags:
     }
 
     .xx{
-        opacity: 0.5;
-        background-color: #EEE;
+        /* opacity: 0.5; */
+        background-color: #93b5cf;
+        color: #fff;
+         
     }
   
 </style>
@@ -95,7 +97,7 @@ tags:
 </div>
 
 <div class="row">
-    <text>result </text> <textarea id="result1" type="text" value=""   readonly=true> </textarea>
+    <text>result </text> <textarea id="result1" type="text"    readonly=true class="xx"   > </textarea>
 </div>
 
 <input class="btn" type="button" id='encryptMsg' value="Encrypt the Message" >   
@@ -113,7 +115,7 @@ tags:
 </div>
 
 <div class="row">
-    <text>result </text> <textarea id="result2" type="text" value=""   readonly=true> </textarea>
+    <text>result </text> <textarea id="result2" type="text"     readonly=true class="xx" > </textarea>
 </div>
 <input class="btn" type="button" id='decyptMsg' value="Decrypt the chiper" /> 
 
@@ -133,20 +135,30 @@ console.log('1')
         })
 
         document.getElementById('encryptMsg').addEventListener('click', async function(){
-            let publicKey = document.getElementById('publicKey2').value
-            let plaintext = document.getElementById('plaintext').value
-            let enc = await encryptMsg(plaintext,publicKey)
-            console.log('enc',enc)
+            try {
+                let publicKey = document.getElementById('publicKey2').value
+                let plaintext = document.getElementById('plaintext').value
+                let enc = await encryptMsg(plaintext,publicKey)
+                console.log('enc',enc)
 
-            document.getElementById('result1').value = enc
+                document.getElementById('result1').value = enc
+            } catch (error) {
+                alert('Encrypt Failed')
+            }
+           
         })
 
         document.getElementById('decyptMsg').addEventListener('click', async function(){
             let privateKey = document.getElementById('privateKey2').value
             let cipher = document.getElementById('cipher').value
-            let dec = await decryptMsg(cipher,privateKey)
-            console.log('dec',dec)
-            document.getElementById('result2').value = dec
+            try {
+                let dec = await decryptMsg(cipher,privateKey)
+                console.log('dec',dec)
+                document.getElementById('result2').value = dec    
+            } catch (error) {
+                alert('Decrypt Failed')
+            }
+            
         })
 
         function Uint8ArrayToHex(arr){
@@ -256,6 +268,7 @@ console.log('1')
         }
 
         async function decryptMsg(cipher,privateKeyBase64) {
+            
             let cipherArr = base64ToUInt8Array(cipher)
             let head = cipherArr.slice(0,8)
             let iv = cipherArr.slice(8,24)
