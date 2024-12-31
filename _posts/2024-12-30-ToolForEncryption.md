@@ -118,7 +118,7 @@ tags:
 <input class="btn" type="button" id='decyptMsg' value="Decrypt the chiper" /> 
 
 
-<script>   {% include_file js/ec2.js %} </script>
+<script>   {% include_file js/ec.js %} </script>
 
 <script  >
 console.log('1')
