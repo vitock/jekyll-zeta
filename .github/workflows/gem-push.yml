@@ -2,10 +2,10 @@ name: Ruby Gem
 
 on:
   push:
-    path: 
+    paths: 
       - "*.gemspec"
   pull_request:
-    path: 
+    paths: 
       - "*.gemspec"
 
 jobs:
