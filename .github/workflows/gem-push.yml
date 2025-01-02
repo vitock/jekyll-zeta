@@ -2,9 +2,11 @@ name: Ruby Gem
 
 on:
   push:
-    branches: [ "master" ]
+    path: 
+      - "*.gemspec"
   pull_request:
-    branches: [ "master" ]
+    path: 
+      - "*.gemspec"
 
 jobs:
   build:
