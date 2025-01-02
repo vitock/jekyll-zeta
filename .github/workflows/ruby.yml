@@ -52,6 +52,7 @@ jobs:
         cat _config.yml| sed "s/\/jekyll-zeta//g" > tmp.yml
         echo "\ndestination: dist" >> tmp.yml
         mv tmp.yml _config.yml
+        cat _config.yml
         chmod +x ./runThisToBuild && ./runThisToBuild
         find ./dist -maxdepth 1 -type f -not \( -name  "*.html" -o -name "*.png" \) -exec rm  {} \;
         cd dist
