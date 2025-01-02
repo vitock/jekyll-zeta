@@ -47,6 +47,18 @@ jobs:
         find ./_site -maxdepth 1 -type f -not \( -name  "*.html" -o -name "*.png" \) -exec rm  {} \;
 
 
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./_site
+    
+    - name: build for branch
+      shell: bash
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 自动获取 GitHub Token
+      run: |
+        
         echo "--------- build for dist branch ------------"
 
         cat _config.yml| sed "s/\/jekyll-zeta//g" > tmp.yml
@@ -74,16 +86,7 @@ jobs:
           git remote add origin https://github.com/${{ github.repository }}.git
  
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:dist -f  
-
-          cd ..
-
-
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: ./_site
-    
-   
+ 
       
             
   deploy:
