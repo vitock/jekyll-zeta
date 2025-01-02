@@ -20,6 +20,7 @@ permissions:
 
 jobs:
   del_runs:
+      needs: deploy
       runs-on: ubuntu-latest
       permissions:
         actions: write
@@ -30,8 +31,8 @@ jobs:
           with:
             token: ${{ secrets.GITHUB_TOKEN }}
             repository: ${{ github.repository }}
-            retain_days: 7
-            keep_minimum_runs: 6
+            retain_days: 2
+            keep_minimum_runs: 2
   build:
 
     runs-on: ubuntu-latest
