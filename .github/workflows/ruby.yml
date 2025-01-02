@@ -50,7 +50,7 @@ jobs:
         echo "--------- build for dist branch ------------"
 
         cat _config.yml| sed "s/\/jekyll-zeta//g" > tmp.yml
-        echo "\ndestination: dist" >> tmp.yml
+        echo -e "\ndestination: dist" >> tmp.yml
         mv tmp.yml _config.yml
         cat _config.yml
         chmod +x ./runThisToBuild && ./runThisToBuild
