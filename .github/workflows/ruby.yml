@@ -68,7 +68,7 @@ jobs:
         chmod +x ./runThisToBuild && ./runThisToBuild
         find ./dist -maxdepth 1 -type f -not \( -name  "*.html" -o -name "*.png" \) -exec rm  {} \;
         cd dist
-        echo "push to dist branch"
+          echo "push to dist branch"
 
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-bot@example.com"
@@ -76,7 +76,6 @@ jobs:
           DATESTR="$(date -u "+%Y-%m-%dT%H:%M:%SZ")"
 
           ls -al
-          cd _site
           git init 
           git add .
           git status
