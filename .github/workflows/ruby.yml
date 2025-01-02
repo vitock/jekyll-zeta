@@ -70,11 +70,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: BuildForDist
+      - name: build for dist branch
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 自动获取 GitHub Token
         run: |
+          pwd 
           cat _config.yml| sed "s/\/jekyll-zeta//g" > tmp.yml
           mv tmp.yml _config.yml
           chmod +x ./runThisToBuild && ./runThisToBuild
