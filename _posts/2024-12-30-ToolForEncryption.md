@@ -7,7 +7,7 @@ categories:
 mathjax: false 
 # key: false 
 
-permallink: proctect your password
+permalink: "Proctect-your-password"
 
  
 tags:
