@@ -124,7 +124,7 @@ tags:
 
 <script  >
 console.log('1') 
-    const plain = 'Message Readable'
+    const plain = 'plain text message:)'
     !async function (){
 
         document.getElementById('genKeyPair2').addEventListener('click', async function(){
