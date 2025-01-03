@@ -123,15 +123,25 @@ tags:
 <script>   {% include_file js/ec.js %} </script>
 
 <script  >
-console.log('1')
+console.log('1') 
+    const plain = 'Message Readable'
     !async function (){
 
-        document.getElementById('genKeyPair2').addEventListener('click', function(){
-            genKeyPair2()
+        document.getElementById('genKeyPair2').addEventListener('click', async function(){
+            let kp = genKeyPair2()
+
+            document.getElementById('publicKey2').value = kp.publickKey
+            document.getElementById('privateKey2').value = kp.privateKey
+            document.getElementById('cipher').value = await encryptMsg(plain,kp.publickKey)
         })
         
-        document.getElementById('genKeyPair').addEventListener('click', function(){
+        document.getElementById('genKeyPair').addEventListener('click',async  function(){
             let kp = genKeyPair();
+
+            document.getElementById('publicKey2').value = kp.publickKey
+            document.getElementById('privateKey2').value = kp.privateKey
+
+            document.getElementById('cipher').value = await encryptMsg(plain,kp.publickKey)
         })
 
         document.getElementById('encryptMsg').addEventListener('click', async function(){
@@ -340,7 +350,7 @@ console.log('1')
         document.getElementById('publicKey2').value = kp.publickKey
         document.getElementById('privateKey2').value = kp.privateKey
 
-        let plain = 'Hello World 🏊‍♀️ '
+
         document.getElementById('plaintext').value = plain
         document.getElementById('cipher').value = await encryptMsg(plain,kp.publickKey)
     }()
