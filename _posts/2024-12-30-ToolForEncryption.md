@@ -128,7 +128,7 @@ console.log('1')
     !async function (){
 
         document.getElementById('genKeyPair2').addEventListener('click', async function(){
-            let kp = genKeyPair2()
+            let kp = genKeyPair2();
 
             document.getElementById('publicKey2').value = kp.publickKey
             document.getElementById('privateKey2').value = kp.privateKey
@@ -325,9 +325,9 @@ console.log('1')
             try {
                 document.getElementById('publickKey').value = '...'
 
-                let kp = ec.keyFromPrivate(base64ToHex(document.getElementById('privateKey').value), 'hex') 
+                let key = ec.keyFromPrivate(base64ToHex(document.getElementById('privateKey').value), 'hex') 
 
-                let hex = kp.getPublic().encodeCompressed('hex');
+                let hex = key.getPublic().encodeCompressed('hex');
                 let b64 = base64(fromHexString(hex))
  
                 setTimeout(() => {
@@ -336,6 +336,17 @@ console.log('1')
                     } catch (error) {    
                     }
                 }, 1000);
+
+                
+
+                  let privateKey = fromHexString(key.getPrivate('hex'))
+                 let publickKey = fromHexString(key.getPublic().encodeCompressed('hex'))
+                let kp = {
+                    publickKey:base64(publickKey),
+                    privateKey:base64(privateKey)
+                }
+                return kp
+
                 
             } catch (error) {
                 console.log('error',error)
