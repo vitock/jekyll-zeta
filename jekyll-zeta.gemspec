@@ -16,6 +16,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll", ">= 4.0.0"
   spec.add_runtime_dependency "jekyll-paginate", "~> 1.0.0"
   
-  spec.add_runtime_dependency "no-style-please2-plugins", "~>0.7.0"
+  spec.add_runtime_dependency "no-style-please2-plugins", "~>0.8.0"
 
 end

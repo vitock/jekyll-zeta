@@ -1,13 +1,14 @@
 ---
 layout: post
-title: "encrypt blog 2:12345"
+title: "encrypt blog 2:12345 or abcd"
 date: "2024-09-14 19:00:58"
 categories: 
  - blog 
 mathjax: false 
-# key: false 
+key: '333' 
 tags:
  - encrypt1
+ - encryp_abcd
  - blog
  - jekyll-zeta
 ---

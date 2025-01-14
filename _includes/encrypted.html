@@ -28,6 +28,10 @@
     <script>
         !function(){
 
+            {% assign HEXKEY = '' | rand_bytes:32 %}
+            const keyData  = "{{ '' | encrypt_key:page,HEXKEY ,encid}}"
+            const contentEnc = '{{ content | encrypt_content_v2:HEXKEY }}'
+
             const substl = crypto.subtle
             const preFix = '{{encid}}';
             const encid = preFix
@@ -47,6 +51,50 @@
                 return  await substl.deriveBits(pbkdf2,key,256);
             }
 
+            async function decryptRaw(msg64,key){
+            const base64str = msg64.substring(3)
+            const bfMsg = base64js.decode(base64str)
+            const bfIv = bfMsg.subarray(0,16)
+            const bfCipher = bfMsg.subarray(16)
+
+            var aeskey = {
+                name:"AES-CBC",
+            }
+            var keyObj = await substl.importKey('raw',key,aeskey,false,['decrypt'])
+            var aesDec= {name: "AES-CBC",iv:bfIv}
+            var bfDec
+            try{
+                bfDec  = await substl.decrypt(aesDec,keyObj,bfCipher)
+            }catch (error) {
+                console.log(error)
+                throw error
+            }
+            
+            return  new  Uint8Array(bfDec)
+        }
+        async function checkKey(key){
+             {% assign TestData = '' | rand_bytes:12 %}
+            var testData = '{{ TestData }}';
+            var testDataEnc = '{{ TestData | encrypt_content_v2:HEXKEY }}';
+
+            let arrKeys = keyData.split('#')
+            let keyBf = null
+            for (let i = 0; i < arrKeys.length; i++) {
+                const element = arrKeys[i];
+                try{
+                    
+                    let d = await decryptRaw(element,key)
+                    let dec = await decryptRaw(testDataEnc,d)
+                    if((new TextDecoder).decode(dec) == testData ){
+                        keyBf = d;
+                        break;
+                    }
+                }catch (e){
+                }
+            }
+
+            return keyBf
+        }
 
  
         async function decrypt (key0,isCached){
@@ -64,15 +112,16 @@
                 return
             }
 
-            var aeskey = {
-                name:"AES-GCM",
-                length:256
-            }
-            var keyObj = await substl.importKey('raw',key,aeskey,false,['decrypt'])
-            var aesDec= {name: "AES-GCM",iv:bfIv,tagLength:128}
+           
             try {
-                var bfDec  = await substl.decrypt(aesDec,keyObj,bfCipher)
+
+                let keyBf = await checkKey(key)
+                if(!keyBf){
+                    throw 'error psw'
+                }
+                var bfDec  = await decryptRaw(contentEnc,keyBf)
                 var plain = new TextDecoder().decode(bfDec);
+
                 setKey(key)
                 document.getElementById("encrypted").style.display = 'none'
                 // / show decrypted 

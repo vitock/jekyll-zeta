@@ -80,3 +80,5 @@ enc_tags:
     - tag: encrypt2
       # 123
       password: AQAQACAAIQCvWkhJdhn0b21Pz381AdTeMLb5bRO4d2F3usQtpIL0fDD0G8cg4klENXxJNX+rAHwD8VW2iJo4hZKDQrjdOjbJFugo60XnMmbdLEfzXpkqGpjjbe875/owWyNnGGPk3Vf4
+    - tag: encryp_abcd
+      password: AQAQACAAIQDpWALGGTzrk5vX930Eq/4CzvN0JZjzlBHDSf1of9tXL9OlxpR5EsuIELyQ2bmliMYDzaDZC7SBQC+p103Gtt91K3DEq2v/r2NRv+QYMes1u6mu/AHi5B4aqhNE8f416Bjc
