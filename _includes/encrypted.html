@@ -1,3 +1,31 @@
+<style>
+.errPsw{
+    animation: shake 0.4s cubic-bezier(0.25, 1.5, 0.5, 1);
+    border:solid 2px #f0ada0;    
+    border-radius: 4px;
+}
+    @keyframes shake {
+        0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-15px);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    60% {
+        transform: translateX(-7px);
+    }
+    80% {
+        transform: translateX(5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+    }
+</style>
+
 
 <div id="encrypted">
     <h3> {{ site.theme_config.encrypt_title | default : 'Content is Encrypted'}} </h3>
@@ -26,16 +54,24 @@
     </script>
     <script src="//cdn.jsdelivr.net/gh/vitock/jsdelivr@0.1.2/js/base64js.js"></script>
     <script>
-        !function(){
+        
+function uint8ArrayToHex(uint8Array) {
+  return Array.from(uint8Array)
+    .map(byte => byte.toString(16).padStart(2, '0'))  // 转换每个字节为2位16进制
+    .join('');  // 连接成字符串
+}
 
-            {% assign HEXKEY = '' | rand_bytes:32 %}
-            const keyData  = "{{ '' | encrypt_key:page,HEXKEY ,encid}}"
-            const contentEnc = '{{ content | encrypt_content_v2:HEXKEY }}'
+ 
+
+    {%- assign HEXKEY = '' | rand_bytes:32 %}
+    const contentEnc = '{{ content | encrypt_content_v2:HEXKEY }}';
+    
+        !function(){
 
             const substl = crypto.subtle
             const preFix = '{{encid}}';
             const encid = preFix
-            const encryptedContent = '{{ content | encrypt_content:page, encid}}'
+            const encryptedContent = contentEnc;
             const base64str = encryptedContent.substring(3)
             const bfMsg = base64js.decode(base64str)
             const bfIv = bfMsg.subarray(0,12)
@@ -51,55 +87,94 @@
                 return  await substl.deriveBits(pbkdf2,key,256);
             }
 
-            async function decryptRaw(msg64,key){
-            const base64str = msg64.substring(3)
-            const bfMsg = base64js.decode(base64str)
-            const bfIv = bfMsg.subarray(0,16)
-            const bfCipher = bfMsg.subarray(16)
+        async function decryptRaw(bf,key,outV){
+            if(bf.length < 8){
+                if(outV){
+                     outV.count = bf.length
+                }
+                throw 'err'
+            }
+            let count = 0;
+            for (let i  = 0; i  < 4; i ++) {
+                count |= ((bf[i] ^ bf[i + 4] ^ i) << ((3 - i) * 8))
+            }
 
+            if(outV){
+                outV.count = count
+            }
+            if (bf.length < count) {
+                return
+            }
+
+            let bfIv = bf.slice(4,20)
+            let bfCipher = bf.slice(20,count )
+   
             var aeskey = {
-                name:"AES-CBC",
+                name:"AES-CTR",
             }
             var keyObj = await substl.importKey('raw',key,aeskey,false,['decrypt'])
-            var aesDec= {name: "AES-CBC",iv:bfIv}
-            var bfDec
+            var aesDec= {name: "AES-CTR",counter:bfIv,length:64};
             try{
-                bfDec  = await substl.decrypt(aesDec,keyObj,bfCipher)
+                let bfDec  = await substl.decrypt(aesDec,keyObj,bfCipher)
+                return  new  Uint8Array(bfDec)
             }catch (error) {
-                console.log(error)
                 throw error
             }
-            
-            return  new  Uint8Array(bfDec)
+             
+        }
+ 
+        async function decryptBase64Msg(msg64,key){
+            const base64str = msg64;
+            const bfMsg = base64js.decode(base64str)
+            return await decryptRaw(bfMsg,key)
+
         }
         async function checkKey(key){
-             {% assign TestData = '' | rand_bytes:12 %}
-            var testData = '{{ TestData }}';
-            var testDataEnc = '{{ TestData | encrypt_content_v2:HEXKEY }}';
+            const keyData  = "{{ '' | encrypt_key:page,HEXKEY ,encid}}";
+             {% assign TestData = HEXKEY | gen_test_data_forkey %}
+            const arrTest = '{{ TestData }}'.split('.');
+            const testData = arrTest[0];
+            const testDataEnc = arrTest[1];
+            const bfTestData = base64js.decode(testDataEnc)
 
-            let arrKeys = keyData.split('#')
+
+            const bfKeyData = base64js.decode(keyData)
             let keyBf = null
-            for (let i = 0; i < arrKeys.length; i++) {
-                const element = arrKeys[i];
-                try{
-                    
-                    let d = await decryptRaw(element,key)
-                    let dec = await decryptRaw(testDataEnc,d)
-                    if((new TextDecoder).decode(dec) == testData ){
-                        keyBf = d;
-                        break;
+            let C  = 0;
+            let sum = 0;
+            while (C ++ < 400 ) {
+                if (sum >= bfKeyData.length ) {
+                    break
+                }
+                let bfSub = bfKeyData.slice(sum)
+                
+                try {
+                    let outV = {count:0}
+                    let d = await decryptRaw(bfSub,key,outV)
+
+                    sum += outV.count
+                    if (d) {
+                        let dec = await decryptRaw(bfTestData,d)
+                        let s =  new TextDecoder().decode(dec) 
+                        if(s == testData){
+                            keyBf = d;
+                            break;
+                        }
+                    }else{
+                       
                     }
-                }catch (e){
+                    
+                    
+                } catch (error) {
+                     
                 }
             }
-
+             
             return keyBf
         }
-
  
         async function decrypt (key0,isCached){
             // const key = Uint8Array([...]); // 32 bytes key
-            
             var key  = ''
             if(isCached){
                 key = readKey()
@@ -111,17 +186,13 @@
             if (key.length == 0) {
                 return
             }
-
-           
             try {
-
                 let keyBf = await checkKey(key)
                 if(!keyBf){
                     throw 'error psw'
                 }
-                var bfDec  = await decryptRaw(contentEnc,keyBf)
+                var bfDec  = await decryptBase64Msg(contentEnc,keyBf)
                 var plain = new TextDecoder().decode(bfDec);
-
                 setKey(key)
                 document.getElementById("encrypted").style.display = 'none'
                 // / show decrypted 
@@ -141,7 +212,12 @@
     
                 }, 500);
             } catch (error) {
-                alert("wrong password.")
+                console.log(error)
+                // alert("wrong password.")
+                document.getElementById('passwordinput').classList.add('errPsw');
+                setTimeout(() => {
+                    document.getElementById('passwordinput').classList.remove('errPsw')
+                }, 500);
             }
         }
         
@@ -170,19 +246,24 @@
 
         document.getElementById("ClearBtn1").onclick = function(){
             localStorage.clear();
+            document.getElementById('passwordinput').value = ''
         }
         document.getElementById("ClearBtn2").onclick = function(){
             localStorage.clear();
         }
 
-        {%- if site.theme_config.forbid_cache_password %}
+        
+
+        
+    
+        {% if site.theme_config.forbid_cache_password %}
         function readKey(){
         }
         function setKey(value){
         }
         function clearKey() {
         }
-        {%- else %}
+        {% else %}
             function readKey(){
                 var key = encid;
                 var v = localStorage.getItem(key)
@@ -207,8 +288,12 @@
                 decrypt(cachekey,true)
             }
 
-        {%- endif %}
+        {% endif %}
+        
+        
+ 
     }()
+    
     
     </script>
     
