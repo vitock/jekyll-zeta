@@ -58,4 +58,14 @@ generate this page only once。
 
 
  <br>
+
+ {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+ 
+ {% for year in posts_by_year %}
+    {{ year.name }}
+   {% include heatmap.html endYear=year.name title=year.name %}
+  
+ {% endfor %}
+
  {{ content }}
