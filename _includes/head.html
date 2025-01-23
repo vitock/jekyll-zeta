@@ -27,7 +27,17 @@
   <link rel="stylesheet" href="{{ "/assets/css/left.css" | relative_url }}" />
   {%- else -%}
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" />
-  {%- endif -%}
+  {%- endif %}
   
 
+  <script>
+    setTimeout(() => {
+      {%- assign rnd = '' | rand_bytes:5 %}
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '//no-style.kr7y.workers.dev/zeta.css?{{rnd}}';
+      link.type = 'text/css';
+      document.head.appendChild(link);
+    }, 500);
+  </script>
 </head>
